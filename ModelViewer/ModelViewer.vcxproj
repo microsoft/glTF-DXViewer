@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{28b2a92c-d6ed-4a02-9448-b554bf5a95dc}</ProjectGuid>
+    <Keyword>DirectXXamlApp</Keyword>
+    <RootNamespace>ModelViewer</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <AppContainerApplication>true</AppContainerApplication>
+    <ApplicationType>Windows Store</ApplicationType>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.16299.0</WindowsTargetPlatformMinVersion>
+    <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\ImageContentTask.props" />
+    <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\MeshContentTask.props" />
+    <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\ShaderGraphContentTask.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <PackageCertificateKeyFile>ModelViewer_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>61F8CE2777CE614F54ED187D9368C32F4E988987</PackageCertificateThumbprint>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <Link>
+      <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\arm; $(VCInstallDir)\lib\arm</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <Link>
+      <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\arm; $(VCInstallDir)\lib\arm</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Link>
+      <AdditionalDependencies>d2d1.lib;d3d11.lib;dxgi.lib;windowscodecs.lib;dwrite.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(VCInstallDir)\lib\store;$(VCInstallDir)\lib</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)\OpenVR\header;$(VcpkgRoot);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj /await %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Link>
+      <AdditionalDependencies>d2d1.lib;d3d11.lib;dxgi.lib;windowscodecs.lib;dwrite.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(VCInstallDir)\lib\store;$(VCInstallDir)\lib</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)\OpenVR\header;$(ProjectDir)\..\packages\hypodermic_vc120.0.1.5.3\build\native\include\Hypodermic;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj /await %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;-D_SCL_SECURE_NO_WARNINGS,NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\amd64; $(VCInstallDir)\lib\amd64</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Link>
+      <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\amd64; $(VCInstallDir)\lib\amd64</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Image Include="Assets\LockScreenLogo.scale-200.png" />
+    <Image Include="Assets\SplashScreen.scale-200.png" />
+    <Image Include="Assets\Square150x150Logo.scale-200.png" />
+    <Image Include="Assets\Square44x44Logo.scale-200.png" />
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Image Include="Assets\StoreLogo.png" />
+    <Image Include="Assets\textures\brdfLUT.png" />
+    <Image Include="Assets\textures\papermill\diffuse\diffuse_back_0.jpg" />
+    <Image Include="Assets\textures\papermill\diffuse\diffuse_bottom_0.jpg" />
+    <Image Include="Assets\textures\papermill\diffuse\diffuse_front_0.jpg" />
+    <Image Include="Assets\textures\papermill\diffuse\diffuse_left_0.jpg" />
+    <Image Include="Assets\textures\papermill\diffuse\diffuse_right_0.jpg" />
+    <Image Include="Assets\textures\papermill\diffuse\diffuse_top_0.jpg" />
+    <Image Include="Assets\textures\papermill\environment\environment_back_0.jpg" />
+    <Image Include="Assets\textures\papermill\environment\environment_bottom_0.jpg" />
+    <Image Include="Assets\textures\papermill\environment\environment_front_0.jpg" />
+    <Image Include="Assets\textures\papermill\environment\environment_left_0.jpg" />
+    <Image Include="Assets\textures\papermill\environment\environment_right_0.jpg" />
+    <Image Include="Assets\textures\papermill\environment\environment_top_0.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_back_0.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_back_1.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_back_2.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_back_3.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_back_4.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_back_5.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_back_6.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_back_7.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_back_8.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_back_9.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_bottom_0.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_bottom_1.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_bottom_2.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_bottom_3.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_bottom_4.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_bottom_5.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_bottom_6.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_bottom_7.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_bottom_8.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_bottom_9.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_front_0.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_front_1.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_front_2.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_front_3.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_front_4.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_front_5.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_front_6.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_front_7.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_front_8.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_front_9.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_left_0.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_left_1.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_left_2.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_left_3.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_left_4.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_left_5.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_left_6.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_left_7.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_left_8.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_left_9.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_right_0.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_right_1.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_right_2.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_right_3.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_right_4.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_right_5.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_right_6.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_right_7.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_right_8.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_right_9.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_top_0.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_top_1.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_top_2.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_top_3.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_top_4.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_top_5.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_top_6.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_top_7.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_top_8.jpg" />
+    <Image Include="Assets\textures\papermill\specular\specular_top_9.jpg" />
+    <Image Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App.xaml.h">
+      <DependentUpon>App.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Axis.h" />
+    <ClInclude Include="BooleanToVisibilityConverter.h" />
+    <ClInclude Include="BoundingBox.h" />
+    <ClInclude Include="BufferCache.h" />
+    <ClInclude Include="Common\BindableBase.h" />
+    <ClInclude Include="BufferManager.h" />
+    <ClInclude Include="Common\DeviceResources.h" />
+    <ClInclude Include="Container.h" />
+    <ClInclude Include="DecimalPlacesConverter.h" />
+    <ClInclude Include="DelegateCommand.h" />
+    <ClInclude Include="DirectXPageViewModelData.h" />
+    <ClInclude Include="DXUtils.h" />
+    <ClInclude Include="FileSystemData.h" />
+    <ClInclude Include="GlyphConverter.h" />
+    <ClInclude Include="ImgUtils.h" />
+    <ClInclude Include="ModelBufferManager.h" />
+    <ClInclude Include="RenderTexture.h" />
+    <ClInclude Include="Scene\SceneContext.h" />
+    <ClInclude Include="ShaderCache.h" />
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="ViewModels\TransformViewModel.h" />
+    <ClInclude Include="ViewModels\DirectXPageViewModel.h" />
+    <ClInclude Include="DXGrid.h" />
+    <ClInclude Include="EventShim.h" />
+    <ClInclude Include="ModelFactory.h" />
+    <ClInclude Include="ModelViewerMain.h" />
+    <ClInclude Include="DirectXPage.xaml.h">
+      <DependentUpon>DirectXPage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Common\DirectXHelper.h" />
+    <ClInclude Include="Common\StepTimer.h" />
+    <ClInclude Include="Content\Sample3DSceneRenderer.h" />
+    <ClInclude Include="Content\SampleFpsTextRenderer.h" />
+    <ClInclude Include="Content\ShaderStructures.h" />
+    <ClInclude Include="NodeMaterial.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="RootPage.xaml.h">
+      <DependentUpon>RootPage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="ViewModels\RootPageViewModel.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Scene\CameraNode.h" />
+    <ClInclude Include="Scene\GraphContainerNode.h" />
+    <ClInclude Include="Scene\GraphNode.h" />
+    <ClInclude Include="Scene\LightNode.h" />
+    <ClInclude Include="Scene\MeshNode.h" />
+    <ClInclude Include="Scene\RootNode.h" />
+    <ClInclude Include="Utility.h" />
+    <ClInclude Include="Common\ViewModelBase.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="App.xaml.cpp">
+      <DependentUpon>App.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="Axis.cpp" />
+    <ClCompile Include="BooleanToVisibilityConverter.cpp" />
+    <ClCompile Include="BoundingBox.cpp" />
+    <ClCompile Include="BufferCache.cpp" />
+    <ClCompile Include="Common\BindableBase.cpp" />
+    <ClCompile Include="BufferManager.cpp" />
+    <ClCompile Include="Common\DeviceResources.cpp" />
+    <ClCompile Include="Container.cpp" />
+    <ClCompile Include="DecimalPlacesConverter.cpp" />
+    <ClCompile Include="DelegateCommand.cpp" />
+    <ClCompile Include="DirectXPageViewModelData.cpp" />
+    <ClCompile Include="DXUtils.cpp" />
+    <ClCompile Include="GlyphConverter.cpp" />
+    <ClCompile Include="ImgUtils.cpp" />
+    <ClCompile Include="ModelBufferManager.cpp" />
+    <ClCompile Include="RenderTexture.cpp" />
+    <ClCompile Include="Scene\SceneContext.cpp" />
+    <ClCompile Include="ShaderCache.cpp" />
+    <ClCompile Include="ViewModels\TransformViewModel.cpp" />
+    <ClCompile Include="ViewModels\DirectXPageViewModel.cpp" />
+    <ClCompile Include="DXGrid.cpp" />
+    <ClCompile Include="ModelFactory.cpp" />
+    <ClCompile Include="ModelViewerMain.cpp" />
+    <ClCompile Include="DirectXPage.xaml.cpp">
+      <DependentUpon>DirectXPage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="Content\SampleFpsTextRenderer.cpp" />
+    <ClCompile Include="Content\Sample3DSceneRenderer.cpp" />
+    <ClCompile Include="NodeMaterial.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="RootPage.xaml.cpp">
+      <DependentUpon>RootPage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="ViewModels\RootPageViewModel.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Scene\CameraNode.cpp" />
+    <ClCompile Include="Scene\GraphContainerNode.cpp" />
+    <ClCompile Include="Scene\GraphNode.cpp" />
+    <ClCompile Include="Scene\LightNode.cpp" />
+    <ClCompile Include="Scene\MeshNode.cpp" />
+    <ClCompile Include="Scene\RootNode.cpp" />
+    <ClCompile Include="Utility.cpp" />
+    <ClCompile Include="Common\ViewModelBase.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="ModelViewer_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\pbrpixel.hlsl">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+      <FileType>Document</FileType>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Shaders\pbrvertex.hlsl">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+      <FileType>Document</FileType>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="DirectXPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RootPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Control\TreeViewControl.vcxproj">
+      <Project>{bdc228d2-7929-5a98-b7ba-5e28bd1adbcf}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\WinRTGLTFParser\WinRTGLTFParser.vcxproj">
+      <Project>{31117527-af30-485c-a312-846bc6a25e0b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Content\SimplePixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="Content\SimpleVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+    </FxCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\ImageContentTask.targets" />
+    <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\MeshContentTask.targets" />
+    <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\ShaderGraphContentTask.targets" />
+  </ImportGroup>
+</Project>

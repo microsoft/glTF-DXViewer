@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GraphNode">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAIAAEwASEAIAAAQgAEAAAEEAIIEAQAIAAEA=</HashCode>
+      <FileName>Scene\GraphNode.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GraphContainerNode">
+    <Position X="4.25" Y="0.5" Width="2.5" />
+    <Members>
+      <Method Name="CreateDeviceDependentResources" Hidden="true" />
+      <Method Name="DevResources" Hidden="true" />
+      <Method Name="FindChildByIndex" Hidden="true" />
+      <Method Name="GetId" Hidden="true" />
+      <Method Name="GetPitch" Hidden="true" />
+      <Method Name="GetRoll" Hidden="true" />
+      <Method Name="GetRotationX" Hidden="true" />
+      <Method Name="GetRotationY" Hidden="true" />
+      <Method Name="GetRotationZ" Hidden="true" />
+      <Method Name="GetYaw" Hidden="true" />
+      <Method Name="GraphContainerNode" Hidden="true" />
+      <Method Name="Index" Hidden="true" />
+      <Method Name="Initialise" Hidden="true" />
+      <Method Name="IsEqual" Hidden="true" />
+      <Method Name="IsSelected" Hidden="true" />
+      <Method Name="Name" Hidden="true" />
+      <Method Name="operator delete" Hidden="true" />
+      <Method Name="operator new" Hidden="true" />
+      <Method Name="QuaternionToEuler" Hidden="true" />
+      <Method Name="SetName" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AQSwIIAAAYGAE0ASBYKgAQQgAEAECEkgIINAY5IBADA=</HashCode>
+      <FileName>Scene\GraphContainerNode.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeshNode">
+    <Position X="7.5" Y="0.5" Width="2.75" />
+    <Members>
+      <Method Name="~MeshNode" Hidden="true" />
+      <Method Name="operator delete" Hidden="true" />
+      <Method Name="operator new" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="MeshNode::BufferWrapper" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scene\MeshNode.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <InheritanceLine Type="GraphContainerNode" FixedFromPoint="true">
+      <Path>
+        <Point X="6.75" Y="2.562" />
+        <Point X="7.5" Y="2.562" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AACACAAAQIAAA0ACwAAAAQAAAEAEAEFACEAADAIAAAA=</HashCode>
+      <FileName>Scene\MeshNode.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraNode" Collapsed="true">
+    <Position X="8.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Scene\CameraNode.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightNode" Collapsed="true">
+    <Position X="8.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scene\LightNode.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

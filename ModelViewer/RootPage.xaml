@@ -1,0 +1,98 @@
+﻿<Page
+    x:Class="ModelViewer.RootPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ModelViewer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ViewModels"
+    mc:Ignorable="d">
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <local:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"  />
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <Page.DataContext>
+        <vm:RootPageViewModel/>
+    </Page.DataContext>
+
+    <NavigationView x:Name="NavView"
+                    ItemInvoked="NavView_ItemInvoked"
+                    SelectionChanged="NavView_SelectionChanged"
+                    Loaded="NavView_Loaded"
+                    Canvas.ZIndex="0" IsPaneOpen="False" CompactModeThresholdWidth="50" ExpandedModeThresholdWidth="10000"
+                    Header="{x:Bind ViewModel}"
+                    Background="{ThemeResource SystemControlAcrylicWindowBrush }">
+        <NavigationView.MenuItems>
+            <NavigationViewItem x:Uid="HomeNavItem" Content="Home" Tag="home">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE10F;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItemSeparator/>
+        </NavigationView.MenuItems>
+
+        <NavigationView.HeaderTemplate>
+            <DataTemplate x:DataType="vm:RootPageViewModel">
+                <Grid Margin="24,10,0,0" Background="{ThemeResource SystemControlAcrylicWindowBrush }">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <ProgressBar Grid.ColumnSpan="2" Height="10" IsIndeterminate="{x:Bind Loading, Mode=OneWay}"
+                                 Visibility="{Binding Loading, Converter={StaticResource booleanToVisibilityConverter}, Mode=OneWay}">
+                    </ProgressBar>
+                    <Grid Grid.Row="1" Background="{ThemeResource SystemControlAcrylicWindowBrush }" Margin="0,0,12,0"
+                                   HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                               FontSize="28"
+                               VerticalAlignment="Bottom"
+                               Text="DirectX GLTF Viewer"
+                                   RelativePanel.AlignLeftWithPanel="True"/>
+                        <TextBlock Style="{StaticResource TitleTextBlockStyle}" HorizontalAlignment="Right"
+                               FontSize="12"
+                                   Grid.Column="1"
+                               VerticalAlignment="Bottom"
+                                    Text="{x:Bind Filename, Mode=OneWay}"
+                                   RelativePanel.AlignRightWithPanel="True"/>
+                    </Grid>
+                    <CommandBar Grid.Column="1"
+                               Grid.Row="1"
+                                Margin="8,0,8,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            DefaultLabelPosition="Right"
+                            Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+                        <AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Label="Import" Icon="Import" Command="{x:Bind LoadFileCommand}"/>
+                    </CommandBar>
+                </Grid>
+            </DataTemplate>
+        </NavigationView.HeaderTemplate>
+
+        <NavigationView.PaneFooter>
+            <HyperlinkButton x:Name="MoreInfoBtn"
+                             Content="More info"
+                             Click="MoreInfoBtn_Click"
+                             Margin="12,0"/>
+        </NavigationView.PaneFooter>
+
+        <Frame x:Name="ContentFrame" Margin="6" Background="{ThemeResource SystemControlAcrylicWindowBrush }">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <NavigationThemeTransition/>
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
+
+    </NavigationView>
+</Page>
