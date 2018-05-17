@@ -25,7 +25,7 @@ The selective PBR rendering allow you to turn on and off different parts of the 
 I used [vcpkg](https://github.com/Microsoft/vcpkg) for any source code dependencies and [Nuget](https://www.nuget.org/) and the Visual Studio integration to install binary dependencies. Neither of which are requirements.
 
 # Building
-This project can be built using Visual Studio 2017 Update 4 on Windows 10 Fall Creators Update (16299.0).
+This project can be built using Visual Studio 2017 Version 15.6.7 on Windows 10 Fall Creators Update (16299.0).
 
 # Further Information
 Please see this article for full details around features and coding for this sample. 
