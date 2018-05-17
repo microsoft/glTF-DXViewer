@@ -16,7 +16,7 @@ The screenshot is showing the DamagedHelmet sample file  being rendered in the s
 
 The selective PBR rendering allow you to turn on and off different parts of the PBR shader to provide a better understanding of the visual effect of each.
 
-![Selective PBR Rendering](https://raw.github.com/peted70/dx-gltf-viewer/master/img/selective-rendering.PNG)
+![Selective PBR Rendering](https://raw.github.com/peted70/dx-gltf-viewer/master/img/selective-rendering.png)
 
 # Dependencies
 * [boost-signals2](https://www.boost.org/doc/libs/1_67_0/doc/html/signals2.html) (header only observer/observable pattern)
