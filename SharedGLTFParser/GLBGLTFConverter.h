@@ -63,7 +63,7 @@ namespace GLTFParser
 		const Callbacks& EventHandlers() const { return _callbacks; }
 		Callbacks& EventHandlers() { return _callbacks; }
 
-		void Read(shared_ptr<istream> file);
+		void Read(shared_ptr<istream> file, const string& baseUri, IStreamReader& gltfStreamReader);
 		void CheckExtensions(const GLTFDocument& document);
 		void ParseDocument(const ParserContext& parser);
 

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <GLTFSDK\IStreamReader.h>
 #include <iostream>
 #include <functional>
 #include <memory>
@@ -107,7 +108,9 @@ public:
 	BufferDesc desc;
 };
 
-HRESULT GLTFPARSER_API ParseFile(shared_ptr<istream> inStr,
+HRESULT GLTFPARSER_API ParseFile(shared_ptr<istream> inStr, 
+	const string& baseUri,
+	Microsoft::glTF::IStreamReader& gltfStreamReader,
 	function<void(const BufferData&)> bufferCallback,
 	function<void(const MaterialData&)> materialCallback,
 	function<void(const TextureData&)> textureCallback,

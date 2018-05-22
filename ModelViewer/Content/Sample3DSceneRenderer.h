@@ -3,7 +3,7 @@
 #include "..\Common\DeviceResources.h"
 #include "ShaderStructures.h"
 #include "..\Common\StepTimer.h"
-#include "../SharedGLTFParser/gltfparser.h"
+//#include "../SharedGLTFParser/gltfparser.h"
 #include "DXGrid.h"
 #include "Axis.h"
 #include "./Scene/GraphContainerNode.h"
