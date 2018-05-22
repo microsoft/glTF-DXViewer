@@ -6,6 +6,7 @@
 namespace WinRTGLTFParser
 {
 	using namespace Windows::Storage::Streams;
+	using namespace Windows::Storage;
 	using namespace Platform;
 	using namespace std;
 
@@ -254,7 +255,7 @@ namespace WinRTGLTFParser
 		/// </summary>
 		/// <param name="Filename"></param>
 		/// <returns></returns>
-		void ParseFile(String^ Filename);
+		void ParseFile(StorageFile^ storageFile);
     };
 }
 

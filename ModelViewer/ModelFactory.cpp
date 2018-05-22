@@ -85,7 +85,7 @@ void ModelFactory::CreateSceneNode(GLTF_SceneNodeData^ data)
 	}
 }
 
-future<shared_ptr<GraphNode>> ModelFactory::CreateFromFileAsync(String^ filename)
+future<shared_ptr<GraphNode>> ModelFactory::CreateFromFileAsync(StorageFile^ file)
 {
 	_parser = ref new GLTF_Parser();
 	_root = _currentNode = nullptr;
@@ -104,7 +104,7 @@ future<shared_ptr<GraphNode>> ModelFactory::CreateFromFileAsync(String^ filename
 	_parser->OnTransformEvent += ref new TransformEventHandler(es, &EventShim::OnTransform);
 	_parser->OnSceneNodeEvent += ref new SceneNodeEventHandler(es, &EventShim::OnSceneNode);
 
-	co_await async([this, filename]() { _parser->ParseFile(filename); });
+	co_await async([this, file]() { _parser->ParseFile(file); });
 
 	_root->AfterLoad();
 

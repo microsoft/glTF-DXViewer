@@ -43,33 +43,19 @@ future<shared_ptr<GraphNode>> RootPageViewModel::LoadFileAsync()
 {
 	auto fop = ref new FileOpenPicker();
 	fop->FileTypeFilter->Append(".glb");
-	
-	// The code flow supports gltf files but unless we copy all of the loose files over 
-	// to a location that the native C++ environment can open them from then we will just
-	// get access denied.
 	//fop->FileTypeFilter->Append(".gltf");
 
-	auto file = co_await fop->PickSingleFileAsync();
-	if (file == nullptr)
+	auto storageFile = co_await fop->PickSingleFileAsync();
+	if (storageFile == nullptr)
 		co_return nullptr;
 
 	// RAII-style for ensuring that the progress gets cleared robustly
 	auto loader = make_unique<LoadingWrapper>([this]() { Loading = true; }, [this]() { Loading = false; });
 
-	Utility::Out(L"filename = %s", file->Path->Data());
-	Filename = file->Path;
+	Utility::Out(L"filename = %s", storageFile->Path->Data());
+	Filename = storageFile->Path;
 
-	// Since we don't have access to open a file in native code I'll take a copy of the file here
-	// and access it from the application's temp folder. Another option might be to implement a streambuf
-	// which streams data from a Winrt stream but since this is just a sample that seems quite high effort.
-	// A knock-on effect from this is that GLTF files won't load (only GLB) since the files referenced by the
-	// GLTF file i.e. .bin, .jpg, etc. won't have also been copied across..
-	//
-	auto tempFolder = Windows::Storage::ApplicationData::Current->TemporaryFolder;
-	auto tempFile = co_await file->CopyAsync(tempFolder, file->Name, NameCollisionOption::GenerateUniqueName);
-
-	Utility::Out(L"temp file path = %s", tempFile->Path->Data());
-	auto ret = co_await ModelFactory::Instance().CreateFromFileAsync(tempFile->Path);
+	auto ret = co_await ModelFactory::Instance().CreateFromFileAsync(storageFile);
 	co_return ret;
 }
 
