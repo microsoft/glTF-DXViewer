@@ -128,12 +128,12 @@ String^ WinRTGLTFParser::ToStringHat(char* ch)
 
 void GLTF_Parser::ParseFile(StorageFile^ storageFile)
 {
-	// Convert the StorageFile into an istream..
 	// try to get an IStorageItemHandleAccess interface from the StorageFile 
 	ComPtr<IUnknown> unknown(reinterpret_cast<IUnknown*>(storageFile));
 	ComPtr<IStorageItemHandleAccess> fileAccessor;
 	ThrowIfFailed(unknown.As(&fileAccessor));
 
+	// Use the IStorageItemHandleAccess::Create method to retrieve an OS HANDLE
 	shared_ptr<void> fileHandle;
 	HANDLE file = nullptr;
 	ThrowIfFailed(fileAccessor->Create(HANDLE_ACCESS_OPTIONS::HAO_READ,
@@ -142,14 +142,19 @@ void GLTF_Parser::ParseFile(StorageFile^ storageFile)
 		nullptr,
 		&file));
 
+	// Use RAII-style to ensure that CloseHandle is called when appropriate
 	bool closed = false;
 	fileHandle.reset(file, [&closed](HANDLE f) { if (!closed) { CloseHandle(f); closed = true; }});
 
+	// Associates a C run-time file descriptor with an existing operating-system file handle.
+	// https://msdn.microsoft.com/en-us/library/bdts1c9x.aspx
 	int fd = _open_osfhandle((intptr_t)file, _O_RDONLY);
 	if (fd == -1)
 	{
 		throw std::exception("Unable to open file descriptor!");
 	}
+
+	// Use RAII-style to ensure that _close is called when appropriate
 	unique_ptr<int, function<int(int*)>> osHandle(&fd,
 		[&closed](int *fd)
 	{
@@ -162,6 +167,7 @@ void GLTF_Parser::ParseFile(StorageFile^ storageFile)
 		return ret;
 	});
 
+	// Open the file descriptor to get a FILE pointer
 	unique_ptr<FILE, function<int(FILE *)>> fileDescriptor(_fdopen(fd, "r"),
 		[&closed](FILE *fp)
 	{
@@ -174,8 +180,8 @@ void GLTF_Parser::ParseFile(StorageFile^ storageFile)
 		return ret;
 	});
 
-	ifstream ifs(fileDescriptor.get());
-	auto str = make_shared<istream>(ifs.rdbuf());
+	// wrap our istream in a shared pointer for sharing with the glTF library..
+	auto str = make_shared<ifstream>(fileDescriptor.get());
 
 	// convert from wide string to string...
 	auto baseUri = wstring_convert<codecvt_utf8<wchar_t>>().to_bytes(storageFile->Path->Data());
