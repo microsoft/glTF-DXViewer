@@ -414,9 +414,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Control\TreeViewControl.vcxproj">
-      <Project>{bdc228d2-7929-5a98-b7ba-5e28bd1adbcf}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\WinRTGLTFParser\WinRTGLTFParser.vcxproj">
       <Project>{31117527-af30-485c-a312-846bc6a25e0b}</Project>
     </ProjectReference>

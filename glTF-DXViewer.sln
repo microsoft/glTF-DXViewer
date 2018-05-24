@@ -13,8 +13,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SharedGLTFParser", "SharedG
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ModelViewer", "ModelViewer\ModelViewer.vcxproj", "{28B2A92C-D6ED-4A02-9448-B554BF5A95DC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TreeViewControl", "Control\TreeViewControl.vcxproj", "{BDC228D2-7929-5A98-B7BA-5E28BD1ADBCF}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SharedGLTFParser\SharedGLTFParser.vcxitems*{31117527-af30-485c-a312-846bc6a25e0b}*SharedItemsImports = 4
@@ -80,18 +78,6 @@ Global
 		{28B2A92C-D6ED-4A02-9448-B554BF5A95DC}.Release|x86.ActiveCfg = Release|Win32
 		{28B2A92C-D6ED-4A02-9448-B554BF5A95DC}.Release|x86.Build.0 = Release|Win32
 		{28B2A92C-D6ED-4A02-9448-B554BF5A95DC}.Release|x86.Deploy.0 = Release|Win32
-		{BDC228D2-7929-5A98-B7BA-5E28BD1ADBCF}.Debug|ARM.ActiveCfg = Debug|ARM
-		{BDC228D2-7929-5A98-B7BA-5E28BD1ADBCF}.Debug|ARM.Build.0 = Debug|ARM
-		{BDC228D2-7929-5A98-B7BA-5E28BD1ADBCF}.Debug|x64.ActiveCfg = Debug|x64
-		{BDC228D2-7929-5A98-B7BA-5E28BD1ADBCF}.Debug|x64.Build.0 = Debug|x64
-		{BDC228D2-7929-5A98-B7BA-5E28BD1ADBCF}.Debug|x86.ActiveCfg = Debug|Win32
-		{BDC228D2-7929-5A98-B7BA-5E28BD1ADBCF}.Debug|x86.Build.0 = Debug|Win32
-		{BDC228D2-7929-5A98-B7BA-5E28BD1ADBCF}.Release|ARM.ActiveCfg = Release|ARM
-		{BDC228D2-7929-5A98-B7BA-5E28BD1ADBCF}.Release|ARM.Build.0 = Release|ARM
-		{BDC228D2-7929-5A98-B7BA-5E28BD1ADBCF}.Release|x64.ActiveCfg = Release|x64
-		{BDC228D2-7929-5A98-B7BA-5E28BD1ADBCF}.Release|x64.Build.0 = Release|x64
-		{BDC228D2-7929-5A98-B7BA-5E28BD1ADBCF}.Release|x86.ActiveCfg = Release|Win32
-		{BDC228D2-7929-5A98-B7BA-5E28BD1ADBCF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
