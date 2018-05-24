@@ -19,13 +19,12 @@ The selective PBR rendering allow you to turn on and off different parts of the 
 ![Selective PBR Rendering](https://raw.github.com/peted70/dx-gltf-viewer/master/img/selective-rendering.png)
 
 # Dependencies
-* [boost-signals2](https://www.boost.org/doc/libs/1_67_0/doc/html/signals2.html) (header only observer/observable pattern)
 * [Microsoft.glTF.cpp](https://www.nuget.org/packages/Microsoft.glTF.CPP/)
 
-I used [vcpkg](https://github.com/Microsoft/vcpkg) for any source code dependencies and [Nuget](https://www.nuget.org/) and the Visual Studio integration to install binary dependencies. Neither of which are requirements.
+I used [Nuget](https://www.nuget.org/) and the Visual Studio integration to install binary dependencies.
 
 # Building
-This project can be built using Visual Studio 2017 Version 15.6.7 on Windows 10 Fall Creators Update (16299.0). I have also testd with version 15.7.1 but needed to add '/d2CoroOptsWorkaround' as in coroutines some variables may get optimised causing an access violation.
+The original version of this project was built using Visual Studio 2017 Version 15.6.7 on Windows 10 Fall Creators Update (16299.0). However, the TreeView control was offered in the SDK from version 17134.0 so the project has been updated to require this removing the extra code dependency in the process. The project has also been testd with version 15.7.1 but there was a need to add the compiler flag '/d2CoroOptsWorkaround' as in coroutines some variables may get optimised away incorrectly causing an access violation under certain circumstances. The project has subsequently been tested in Visual Studio version 15.7.2.
 
 # Further Information
 Please see this article for full details around features and coding for this sample.
