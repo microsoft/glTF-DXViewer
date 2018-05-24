@@ -184,7 +184,7 @@ Sample3DSceneRenderer::Sample3DSceneRenderer(const std::shared_ptr<DeviceResourc
 	_context = make_unique<SceneContext>(m_deviceResources->GetD3DDeviceContext());
 
 	auto data = Container::Instance().ResolveDirectXPageViewModelData();
-	data->RegisterForUpdates(boost::bind(&Sample3DSceneRenderer::NotifyDataChanged, this, _1));
+	data->RegisterForUpdates(bind(&Sample3DSceneRenderer::NotifyDataChanged, this, _1));
 
 	BufferManager::Instance().MVPBuffer().BufferData().light_direction = XMFLOAT4(1.7f, 11.0f, 5.7f, 1.0f);
 	BufferManager::Instance().PerFrameBuffer().BufferData().light.dir = XMFLOAT3(0.5f, 0.5f, -0.5f);

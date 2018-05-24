@@ -296,6 +296,8 @@
     <ClInclude Include="Scene\SceneContext.h" />
     <ClInclude Include="ShaderCache.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="Subject.h" />
+    <ClInclude Include="sub_token.h" />
     <ClInclude Include="ViewModels\TransformViewModel.h" />
     <ClInclude Include="ViewModels\DirectXPageViewModel.h" />
     <ClInclude Include="DXGrid.h" />
@@ -348,6 +350,7 @@
     <ClCompile Include="RenderTexture.cpp" />
     <ClCompile Include="Scene\SceneContext.cpp" />
     <ClCompile Include="ShaderCache.cpp" />
+    <ClCompile Include="sub_token.cpp" />
     <ClCompile Include="ViewModels\TransformViewModel.cpp" />
     <ClCompile Include="ViewModels\DirectXPageViewModel.cpp" />
     <ClCompile Include="DXGrid.cpp" />

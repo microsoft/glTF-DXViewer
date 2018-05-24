@@ -19,7 +19,7 @@ const shared_ptr<RootNode> SceneManager::Current() const
 void SceneManager::AddNode(shared_ptr<GraphNode> newNode)
 {
 	Current()->AddChild(newNode);
-	SceneChanged(*this);
+	SceneChanged.notify(*this);
 }
 
 void SceneManager::SetDevResources(const std::shared_ptr<DX::DeviceResources>& deviceResources)
@@ -37,7 +37,7 @@ void SceneManager::SetSelected(shared_ptr<GraphNode> node)
 
 	// Finally, set our node selected.
 	node->SetSelected(true);
-	SelectionChanged(node);
+	SelectionChanged.notify(node);
 }
 
 shared_ptr<GraphNode> SceneManager::GetSelected()

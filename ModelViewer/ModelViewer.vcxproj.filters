@@ -135,6 +135,7 @@
     <ClCompile Include="ViewModels\RootPageViewModel.cpp">
       <Filter>ViewModels</Filter>
     </ClCompile>
+    <ClCompile Include="sub_token.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -205,6 +206,8 @@
     <ClInclude Include="ViewModels\RootPageViewModel.h">
       <Filter>ViewModels</Filter>
     </ClInclude>
+    <ClInclude Include="Subject.h" />
+    <ClInclude Include="sub_token.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\StoreLogo.png">

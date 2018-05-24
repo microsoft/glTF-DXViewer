@@ -18,7 +18,6 @@ namespace ModelViewer
 	using namespace Windows::UI::Core;
 	using namespace Platform;
 	using namespace ViewModels;
-	//using namespace TreeViewControl;
 	using namespace Windows::UI::ViewManagement;
 
 	/// <summary>
@@ -42,7 +41,7 @@ namespace ModelViewer
 			SceneUpdateProxy(DirectXPage ^page) :
 				owner(page)
 			{
-				SceneManager::Instance().RegisterForUpdates(boost::bind(&SceneUpdateProxy::NotifySceneChanges, this, _1));
+				SceneManager::Instance().RegisterForUpdates(bind(&SceneUpdateProxy::NotifySceneChanges, this, _1));
 			}
 
 			void NotifySceneChanges(SceneManager const& scene)
@@ -63,9 +62,6 @@ namespace ModelViewer
 		void NotifySceneChanges(SceneManager const& scene);
 		
 		TreeViewNode^ AddTreeItemsRecursive(shared_ptr<GraphNode> node, TreeViewNode^ parent);
-
-		// XAML low-level rendering event handler.
-		void OnRendering(Object^ sender, Object^ args);
 
 		// Window event handlers.
 		void OnVisibilityChanged(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::VisibilityChangedEventArgs^ args);

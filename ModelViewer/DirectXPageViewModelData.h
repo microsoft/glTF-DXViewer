@@ -1,20 +1,20 @@
 #pragma once
-#include <boost\signals2\signal.hpp>
+
+#include "Subject.h"
 
 using namespace std;
-namespace signals = boost::signals2;
 
 class DirectXPageViewModelData
 {
 public:
 	DirectXPageViewModelData();
 
-	signals::connection RegisterForUpdates(signals::signal<void(DirectXPageViewModelData const& data)>::slot_type slot)
+	sub_token RegisterForUpdates(function<void(DirectXPageViewModelData&)> slot)
 	{
-		return DataChanged.connect(slot);
+		return DataChanged.subscribe(slot);
 	}
 
-	void UnregisterForUpdates(signals::connection conn)
+	void UnregisterForUpdates(sub_token conn)
 	{
 		conn.disconnect();
 	}
@@ -29,7 +29,7 @@ public:
 		_lightDirection[0] = ld[0];
 		_lightDirection[1] = ld[1];
 		_lightDirection[2] = ld[2];
-		DataChanged(*this);
+		DataChanged.notify(*this);
 	}
 
 	float LightPitch() const { return _lightPitch; }
@@ -38,7 +38,7 @@ public:
 		if (lp == _lightPitch)
 			return;
 		_lightPitch = lp;
-		DataChanged(*this);
+		DataChanged.notify(*this);
 	}
 
 	float LightRotation() const { return _lightRotation; }
@@ -47,7 +47,7 @@ public:
 		if (lr == _lightRotation)
 			return;
 		_lightRotation = lr;
-		DataChanged(*this);
+		DataChanged.notify(*this);
 	}
 
 	float LightScale() const { return _lightScale; }
@@ -56,7 +56,7 @@ public:
 		if (ls == _lightScale)
 			return;
 		_lightScale = ls;
-		DataChanged(*this);
+		DataChanged.notify(*this);
 	}
 
 	float Ibl() const { return _ibl; }
@@ -65,7 +65,7 @@ public:
 		if (i == _ibl)
 			return;
 		_ibl = i;
-		DataChanged(*this);
+		DataChanged.notify(*this);
 	}
 
 	const unsigned char *LightColour() const { return _lightColour; }
@@ -78,7 +78,7 @@ public:
 		_lightColour[0] = lc[0];
 		_lightColour[1] = lc[1];
 		_lightColour[2] = lc[2];
-		DataChanged(*this);
+		DataChanged.notify(*this);
 	}
 
 	bool Metallic() const { return _metallic; }
@@ -87,7 +87,7 @@ public:
 		if (m == _metallic)
 			return;
 		_metallic = m;
-		DataChanged(*this);
+		DataChanged.notify(*this);
 	}
 
 	bool Roughness() const { return _roughness; }
@@ -96,7 +96,7 @@ public:
 		if (r == _roughness)
 			return;
 		_roughness = r;
-		DataChanged(*this);
+		DataChanged.notify(*this);
 	}
 
 	bool BaseColour() const { return _baseColour; }
@@ -105,7 +105,7 @@ public:
 		if (bc == _baseColour)
 			return;
 		_baseColour = bc;
-		DataChanged(*this);
+		DataChanged.notify(*this);
 	}
 
 	bool Diffuse() const { return _diffuse; }
@@ -114,7 +114,7 @@ public:
 		if (d == _diffuse)
 			return;
 		_diffuse = d;
-		DataChanged(*this);
+		DataChanged.notify(*this);
 	}
 
 	bool Specular() const { return _specular; }
@@ -123,7 +123,7 @@ public:
 		if (s == _specular)
 			return;
 		_specular = s;
-		DataChanged(*this);
+		DataChanged.notify(*this);
 	}
 
 	bool F() const { return _f; }
@@ -132,7 +132,7 @@ public:
 		if (f == _f)
 			return;
 		_f = f;
-		DataChanged(*this);
+		DataChanged.notify(*this);
 	}
 
 	bool G() const { return _g; }
@@ -141,7 +141,7 @@ public:
 		if (g == _g)
 			return;
 		_g = g;
-		DataChanged(*this);
+		DataChanged.notify(*this);
 	}
 
 	bool D()const { return _d; }
@@ -150,7 +150,7 @@ public:
 		if (d == _d)
 			return;
 		_d = d;
-		DataChanged(*this);
+		DataChanged.notify(*this);
 	}
 
 private:
@@ -171,7 +171,7 @@ private:
 	bool _g = false;
 	bool _d = false;
 
-	signals::signal<void(DirectXPageViewModelData const& data)> DataChanged;
+	subject<DirectXPageViewModelData&> DataChanged;
 };
 
 

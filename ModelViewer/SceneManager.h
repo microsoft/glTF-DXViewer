@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Scene\RootNode.h"
-#include <boost\signals2\signal.hpp>
 #include "Singleton.h"
 
 // Just using this singleton for the time-being until it becomes clearer on how
@@ -23,19 +22,19 @@ public:
 	void SetDevResources(const shared_ptr<DeviceResources>& deviceResources);
 	shared_ptr<DeviceResources> DevResources() { return _deviceResources; }
 
-	signals::connection RegisterForUpdates(signals::signal<void(SceneManager const&)>::slot_type slot)
+	sub_token RegisterForUpdates(function<void(SceneManager const&)> slot)
 	{
-		return SceneChanged.connect(slot);
+		return SceneChanged.subscribe(slot);
 	}
 
-	void UnregisterForUpdates(signals::connection conn)
+	void UnregisterForUpdates(sub_token conn)
 	{
 		conn.disconnect();
 	}
 
-	signals::connection RegisterForSelectionChanged(signals::signal<void(shared_ptr<GraphNode>)>::slot_type slot)
+	sub_token RegisterForSelectionChanged(function<void(shared_ptr<GraphNode>)> slot)
 	{
-		return SelectionChanged.connect(slot);
+		return SelectionChanged.subscribe(slot);
 	}
 
 	void SetSelected(shared_ptr<GraphNode> node);
@@ -50,6 +49,6 @@ private:
 	shared_ptr<RootNode> _sceneNode;
 	shared_ptr<DeviceResources> _deviceResources;
 
-	signals::signal<void(SceneManager const&)> SceneChanged;
-	signals::signal<void(shared_ptr<GraphNode>)> SelectionChanged;
+	subject<SceneManager const&> SceneChanged;
+	subject<shared_ptr<GraphNode>> SelectionChanged;
 };

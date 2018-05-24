@@ -48,7 +48,7 @@ namespace ViewModels
 			SelectionChangedProxy(DirectXPageViewModel^ owner) :
 				_owner(owner)
 			{
-				SceneManager::Instance().RegisterForSelectionChanged(boost::bind(&SelectionChangedProxy::NotifySelectionChanged, this, _1));
+				SceneManager::Instance().RegisterForSelectionChanged(bind(&SelectionChangedProxy::NotifySelectionChanged, this, _1));
 			}
 
 			void NotifySelectionChanged(shared_ptr<GraphNode> node)
