@@ -14,10 +14,11 @@
 namespace ModelViewer
 {
 	using namespace Windows::UI::Xaml::Input;
+	using namespace Windows::UI::Xaml::Controls;
 	using namespace Windows::UI::Core;
 	using namespace Platform;
 	using namespace ViewModels;
-	using namespace TreeViewControl;
+	//using namespace TreeViewControl;
 	using namespace Windows::UI::ViewManagement;
 
 	/// <summary>
@@ -56,12 +57,12 @@ namespace ModelViewer
 		SceneUpdateProxy updates;
 		UISettings^ _uiSettings;
 
-		TreeNode^ CreateMeshNode(shared_ptr<GraphNode> node);
-		TreeNode^ CreateContainerNode(shared_ptr<GraphNode> node);
+		TreeViewNode^ CreateMeshNode(shared_ptr<GraphNode> node);
+		TreeViewNode^ CreateContainerNode(shared_ptr<GraphNode> node);
 
 		void NotifySceneChanges(SceneManager const& scene);
 		
-		TreeNode^ AddTreeItemsRecursive(shared_ptr<GraphNode> node, TreeNode^ parent);
+		TreeViewNode^ AddTreeItemsRecursive(shared_ptr<GraphNode> node, TreeViewNode^ parent);
 
 		// XAML low-level rendering event handler.
 		void OnRendering(Object^ sender, Object^ args);

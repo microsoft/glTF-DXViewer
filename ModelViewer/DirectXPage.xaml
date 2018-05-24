@@ -9,17 +9,9 @@
     xmlns:tvs="using:TreeViewControl" 
     mc:Ignorable="d">
 
-    <!--<Page.DataContext>
-        <vm:DirectXPageViewModel/>
-    </Page.DataContext>-->
-
     <Page.Resources>
         <ResourceDictionary>
-            <tvs:IntegerToIndentationConverter x:Key="IntToIndConverter"/>
-            <local:GlyphConverter x:Key="folderGlyphConverter" ExpandedGlyph="&#xED44;" CollapsedGlyph="&#xED42;" />
             <local:DecimalPlacesConverter x:Key="dpConverter" />
-            <local:GlyphConverter x:Key="folderOutlineGlyphConverter" ExpandedGlyph="&#xED43;" CollapsedGlyph="&#xED41;" />
-            <local:GlyphConverter x:Key="expandCollapseGlyphConverter" ExpandedGlyph="&#xE70D;" CollapsedGlyph="&#xE76C;"/>
             <local:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"  />
             <local:BooleanToVisibilityConverter x:Key="inverseBooleanToVisibilityConverter" IsInverse="True" />
 
@@ -52,52 +44,66 @@
                     </Grid>
                 </RelativePanel>
             </Flyout>
+
             <DataTemplate x:Key="TreeViewItemDataTemplate">
-                <StackPanel Orientation="Horizontal" Height="30" Margin="{Binding Depth, Converter={StaticResource IntToIndConverter}}" AllowDrop="{Binding Data.IsFolder}">
-                    <FontIcon x:Name="expandCollapseChevron" 
-                          Glyph="{Binding IsExpanded, Converter={StaticResource expandCollapseGlyphConverter}}"
-                          Visibility="{Binding Data.IsFolder, Converter={StaticResource booleanToVisibilityConverter}}"                           
-                          FontSize="10"
-                          Margin="6,4,6,4" 
-                          FontFamily="Segoe MDL2 Assets"                          
-                          />
+                <StackPanel Orientation="Horizontal" 
+                            Height="30"
+                            AllowDrop="{Binding Data.IsFolder}">
                     <Grid>
                         <FontIcon x:Name ="expandCollapseFolder" 
-                              Glyph="{Binding IsExpanded, Converter={StaticResource folderGlyphConverter}}" 
+                              Glyph='&#xF003;'
                               Foreground="#FFFFE793" 
                               FontSize="12" 
                               Margin="0,4,6,4" 
                               FontFamily="Segoe MDL2 Assets"
-                              Visibility="{Binding Data.IsFolder, Converter={StaticResource booleanToVisibilityConverter}}"
+                              Visibility="{Binding Content.IsFolder, Converter={StaticResource booleanToVisibilityConverter}}"
                               />
 
                         <FontIcon x:Name ="nonFolderIcon" 
-                              Glyph="&#xE160;"
-                              Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"
+                              Glyph="&#xF159;"
+                              Foreground="#FF479AFF"
                               FontSize="10" 
                               Margin="10,4,6,4" 
                               FontFamily="Segoe MDL2 Assets"
-                              Visibility="{Binding Data.IsFolder, Converter={StaticResource inverseBooleanToVisibilityConverter}}"
+                              Visibility="{Binding Content.IsFolder, Converter={StaticResource inverseBooleanToVisibilityConverter}}"
                               />
-
-                        <FontIcon x:Name ="expandCollapseFolderOutline" 
-                              Glyph="{Binding IsExpanded, Converter={StaticResource folderOutlineGlyphConverter}}" 
-                              Foreground="#FFECC849" 
-                               FontSize="12"
-                              Margin="0,4,6,4" 
-                              FontFamily="Segoe MDL2 Assets"
-                              Visibility="{Binding Data.IsFolder, Converter={StaticResource booleanToVisibilityConverter}}"/>
                     </Grid>
-
-                    <TextBlock Text="{Binding Data.Name}" 
-                           HorizontalAlignment="Stretch" 
-                           VerticalAlignment="Center"
-                               FontSize="12"
-                           FontWeight="Medium"
-                           FontFamily="Segoe MDL2 Assests"                           
-                           Style="{ThemeResource BodyTextBlockStyle}"/>
+                    <TextBlock
+                        Text="{Binding Content.Name}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        FontFamily="Segoe MDL2 Assests"                           
+                        Style="{ThemeResource BodyTextBlockStyle}"/>
                 </StackPanel>
             </DataTemplate>
+            <Style TargetType="TreeView">
+                <Setter Property="IsTabStop" Value="False" />
+                <Setter Property="BorderBrush" Value="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" />
+                <Setter Property="BorderThickness" Value="6" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TreeView">
+                            <TreeViewList x:Name="ListControl"
+                                      ItemTemplate="{StaticResource TreeViewItemDataTemplate}"
+                                      ItemContainerStyle="{StaticResource TreeViewItemStyle}"
+                                      CanDragItems="True"
+                                      AllowDrop="True"
+                                      CanReorderItems="True">
+                                <TreeViewList.ItemContainerTransitions>
+                                    <TransitionCollection>
+                                        <ContentThemeTransition />
+                                        <ReorderThemeTransition />
+                                        <EntranceThemeTransition IsStaggeringEnabled="False" />
+                                    </TransitionCollection>
+                                </TreeViewList.ItemContainerTransitions>
+                            </TreeViewList>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
         </ResourceDictionary>
     </Page.Resources>
     <ContentControl HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
@@ -266,23 +272,15 @@
                                 HorizontalContentAlignment="Stretch"  
                                 HorizontalAlignment="Stretch" 
                                 VerticalContentAlignment="Stretch"
-                                VerticalAlignment="Stretch">
-                    <tvs:TreeView x:Name="sampleTreeView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                      Grid.Row="1" 
-                      BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
-                      BorderThickness="2"
-                                  FontSize="10"
-                      IsItemClickEnabled="True" 
-                      ItemClick="TreeView_ItemClick"
-                      ItemTemplate="{StaticResource TreeViewItemDataTemplate}">
-                        <tvs:TreeView.ItemContainerTransitions>
-                            <TransitionCollection>
-                                <ContentThemeTransition />
-                                <ReorderThemeTransition />
-                                <EntranceThemeTransition IsStaggeringEnabled="True" />
-                            </TransitionCollection>
-                        </tvs:TreeView.ItemContainerTransitions>
-                    </tvs:TreeView>
+                                VerticalAlignment="Stretch"
+                              BorderThickness="1"
+                              BorderBrush="{StaticResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                                >
+                    <TreeView x:Name="sampleTreeView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                              Grid.Row="1" 
+                              FontSize="10"
+                              ItemInvoked="TreeView_ItemClick">
+                    </TreeView>
                 </ScrollViewer>
             </Grid>
         </Grid>

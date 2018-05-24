@@ -149,7 +149,7 @@ void DirectXPage::LoadInternalState(IPropertySet^ state)
 	m_main->StartRenderLoop();
 }
 
-TreeNode^ DirectXPage::AddTreeItemsRecursive(shared_ptr<GraphNode> node, TreeNode^ parent)
+TreeViewNode^ DirectXPage::AddTreeItemsRecursive(shared_ptr<GraphNode> node, TreeViewNode^ parent)
 {
 	if (parent == nullptr)
 		parent = CreateContainerNode(node);
@@ -157,7 +157,7 @@ TreeNode^ DirectXPage::AddTreeItemsRecursive(shared_ptr<GraphNode> node, TreeNod
 	for (int i = 0; i < node->NumChildren(); i++)
 	{
 		auto child = node->GetChild(i);
-		TreeNode^ treeNode;
+		TreeViewNode^ treeNode;
 		if (dynamic_cast<MeshNode *>(child.get()))
 		{
 			treeNode = CreateMeshNode(child);
@@ -166,7 +166,7 @@ TreeNode^ DirectXPage::AddTreeItemsRecursive(shared_ptr<GraphNode> node, TreeNod
 		{
 			treeNode = CreateContainerNode(child);
 		}
-		parent->Append(treeNode);
+		parent->Children->Append(treeNode);
 		AddTreeItemsRecursive(child, treeNode);
 	}
 	return parent;
@@ -181,28 +181,28 @@ void DirectXPage::NotifySceneChanges(SceneManager const& scene)
 	// Marshal the rest onto the ui thread...
 	Dispatcher->RunAsync(CoreDispatcherPriority::Normal, ref new DispatchedHandler([scn, this]()
 	{
-		sampleTreeView->RootNode->Clear();
+		sampleTreeView->RootNodes->Clear();
 
 		auto root = scn->Current();
 		auto parent = AddTreeItemsRecursive(root, nullptr);
-		sampleTreeView->RootNode->Append(parent);
+		sampleTreeView->RootNodes->Append(parent);
 	}));
 }
 
-TreeNode^ DirectXPage::CreateMeshNode(shared_ptr<GraphNode> node)
+TreeViewNode^ DirectXPage::CreateMeshNode(shared_ptr<GraphNode> node)
 {
 	auto data = ref new GraphNodeData(node);
-	auto treeNode = ref new TreeNode();
-	treeNode->Data = data;
+	auto treeNode = ref new TreeViewNode();
+	treeNode->Content = data;
 	return treeNode;
 }
 
-TreeNode^ DirectXPage::CreateContainerNode(shared_ptr<GraphNode> node)
+TreeViewNode^ DirectXPage::CreateContainerNode(shared_ptr<GraphNode> node)
 {
 	auto data = ref new GraphNodeData(node);
 	data->IsFolder = true;
-	auto treeNode = ref new TreeNode();
-	treeNode->Data = data;
+	auto treeNode = ref new TreeViewNode();
+	treeNode->Content = data;
 	return treeNode;
 }
 // Window event handlers.
@@ -303,10 +303,10 @@ void ModelViewer::DirectXPage::cancelColor_Click(Object^ sender, RoutedEventArgs
 
 void ModelViewer::DirectXPage::TreeView_ItemClick(Object^ sender, ItemClickEventArgs^ e)
 {
-	auto item = dynamic_cast<TreeNode^>(e->ClickedItem);
+	auto item = dynamic_cast<TreeViewNode^>(e->ClickedItem);
 	if (item == nullptr)
 		return;
-	auto nodeData = dynamic_cast<GraphNodeData^>(item->Data);
+	auto nodeData = dynamic_cast<GraphNodeData^>(item->Content);
 	if (nodeData == nullptr)
 		return;
 	nodeData->IsSelected = true;
