@@ -21,7 +21,7 @@ The selective PBR rendering allow you to turn on and off different parts of the 
 # Dependencies
 * [Microsoft.glTF.cpp](https://www.nuget.org/packages/Microsoft.glTF.CPP/)
 
-I used [Nuget](https://www.nuget.org/) and the Visual Studio integration to install binary dependencies.
+[Nuget](https://www.nuget.org/) was used for package management for installing the binary dependencies.
 
 # Building
 The original version of this project was built using Visual Studio 2017 Version 15.6.7 on Windows 10 Fall Creators Update (16299.0). However, the TreeView control was offered in the SDK from version 17134.0 so the project has been updated to require this removing the extra code dependency in the process. The project has also been testd with version 15.7.1 but there was a need to add the compiler flag '/d2CoroOptsWorkaround' as in coroutines some variables may get optimised away incorrectly causing an access violation under certain circumstances. The project has subsequently been tested in Visual Studio version 15.7.2.
