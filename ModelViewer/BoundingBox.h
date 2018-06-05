@@ -37,11 +37,11 @@ public:
 		MaxZ = max<T>(MaxZ, other.MaxZ);
 	}
 
-	static BoundingBox<T> CreateBoundingBoxFromVertexBuffer(void *buffer, unsigned int bufferSize)
+	static BoundingBox<T> CreateBoundingBoxFromVertexBuffer(void *buffer, size_t bufferSize)
 	{
 		XMFLOAT3 *buffPtr = (XMFLOAT3 *)buffer;
 		BoundingBox<T> bbox;
-		for (unsigned int i = 0; i < bufferSize / (3 * sizeof(float)); i++, buffPtr++)
+		for (size_t i = 0; i < bufferSize / (3 * sizeof(float)); i++, buffPtr++)
 		{
 			bbox.MaxX = max<T>(buffPtr->x, bbox.MaxX);
 			bbox.MaxY = max<T>(buffPtr->y, bbox.MaxY);

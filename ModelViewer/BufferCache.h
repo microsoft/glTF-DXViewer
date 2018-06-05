@@ -17,7 +17,7 @@ public:
 	shared_ptr<DeviceResources> DevResources() { return _deviceResources; }
 	const shared_ptr<DeviceResources> DevResources() const { return _deviceResources; }
 
-	int Hash();
+	size_t Hash();
 
 	const wchar_t *ContentType() const { return _data->BufferDescription->BufferContentType->Data(); }
 	unsigned int AccessorIdx() const { return _data->BufferDescription->accessorIdx; }
@@ -27,7 +27,7 @@ public:
 private:
 	bool _hashCalculated = false;
 	shared_ptr<DeviceResources> _deviceResources;
-	int _hash;
+	size_t _hash;
 	unsigned int _accessorIdx;
 	GLTF_BufferData ^ _data;
 };
@@ -102,8 +102,8 @@ public:
 		vertexBufferData.SysMemPitch = 0;
 		vertexBufferData.SysMemSlicePitch = 0;
 
-		CD3D11_BUFFER_DESC vertexBufferDesc(descriptor.Data()->SubResource->ByteWidth, bindFlags);
-		vertexBufferDesc.StructureByteStride = descriptor.Data()->SubResource->StructureByteStride;
+		CD3D11_BUFFER_DESC vertexBufferDesc(static_cast<unsigned int>(descriptor.Data()->SubResource->ByteWidth), bindFlags);
+		vertexBufferDesc.StructureByteStride = static_cast<unsigned int>(descriptor.Data()->SubResource->StructureByteStride);
 
 		auto device = descriptor.DevResources()->GetD3DDevice();
 		ThrowIfFailed(device->CreateBuffer(&vertexBufferDesc, &vertexBufferData, ret->AddressOfBuffer()));
@@ -132,8 +132,8 @@ public:
 	shared_ptr<TBufferWrapper> FindOrCreateBuffer(BufferDescriptor descriptor)
 	{
 		// get the hash value...
-		int hash = descriptor.Hash();
-		map<int, shared_ptr<TBufferWrapper>>::iterator res = _buffers.find(hash);
+		size_t hash = descriptor.Hash();
+		map<size_t, shared_ptr<TBufferWrapper>>::iterator res = _buffers.find(hash);
 		if (res != _buffers.end())
 			return (*res).second;
 
@@ -143,6 +143,6 @@ public:
 	}
 
 private:
-	map<int, shared_ptr<TBufferWrapper>> _buffers;
+	map<size_t, shared_ptr<TBufferWrapper>> _buffers;
 };
 

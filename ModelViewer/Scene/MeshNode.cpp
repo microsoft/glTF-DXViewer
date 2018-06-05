@@ -84,7 +84,7 @@ void MeshNode::CompileAndLoadPixelShader()
 	auto textures = _material->Textures();
 
 	// Allocate the defines map...
-	int count = textures.size();
+	size_t count = textures.size();
 
 	// Iterate through all textures and set them as shader resources...
 	int idx = 0;
@@ -218,11 +218,11 @@ void MeshNode::Draw(SceneContext& context, XMMATRIX model)
 
 	if (indexed)
 	{
-		context.context().DrawIndexed(m_indexCount, 0, 0);
+		context.context().DrawIndexed(static_cast<unsigned int>(m_indexCount), 0, 0);
 	}
 	else
 	{
-		context.context().Draw(m_indexCount, 0);
+		context.context().Draw(static_cast<unsigned int>(m_indexCount), 0);
 	}
 
 	GraphContainerNode::Draw(context, model);

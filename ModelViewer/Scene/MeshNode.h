@@ -71,7 +71,7 @@ private:
 	ComPtr<ID3D11SamplerState> _spSampler;
 	shared_ptr<NodeMaterial> _material;
 
-	uint32	m_indexCount;
+	size_t	m_indexCount;
 
 	shared_ptr<NodeMaterial> _currentMaterial;
 	BoundingBox<float> _bbox;

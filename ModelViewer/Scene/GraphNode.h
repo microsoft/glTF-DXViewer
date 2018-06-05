@@ -29,7 +29,7 @@ public:
 	virtual void ForAllChildrenRecursiveUntil(function<bool(GraphNode&)> func) = 0;
 	virtual GraphNode *FindChildByIndex(int index) = 0;
 	virtual GraphNode *FindChildById(GUID id) = 0;
-	virtual int NumChildren() = 0;
+	virtual size_t NumChildren() = 0;
 	virtual shared_ptr<GraphNode> GetChild(int i) = 0;
 	virtual const wstring& Name() const = 0;
 	virtual void SetName(const wstring& name) = 0;

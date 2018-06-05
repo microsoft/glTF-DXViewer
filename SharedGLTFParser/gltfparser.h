@@ -45,7 +45,7 @@ public:
 	TextureData() {}
 
 	const void *pSysMem;
-	unsigned int dataSize;
+	size_t dataSize;
 	unsigned int imgWidth;
 	unsigned int imgHeight;
 	unsigned int idx;
@@ -91,13 +91,13 @@ struct GLTFPARSER_API SubresourceData
 
 struct GLTFPARSER_API BufferDesc
 {
-	unsigned int ByteWidth;
+	size_t ByteWidth;
 	unsigned int BindFlags;
 	unsigned int CPUAccessFlags;
 	unsigned int MiscFlags;
-	unsigned int StructureByteStride;
+	size_t StructureByteStride;
 	const char *BufferContentType;
-	unsigned int Count;
+	size_t Count;
 };
 
 class GLTFPARSER_API BufferData

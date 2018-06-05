@@ -162,7 +162,7 @@ namespace WinRTGLTFParser
 
 	public:
 		property IntPtr pSysMem;
-		property unsigned int DataSize;
+		property size_t DataSize;
 		property unsigned int ImgWidth;
 		property unsigned int ImgHeight;
 		property unsigned int Idx;
@@ -172,11 +172,11 @@ namespace WinRTGLTFParser
 	public ref class GLTF_SubresourceData sealed
 	{
 	public:
-		property unsigned int ByteWidth;
+		property size_t ByteWidth;
 		property unsigned int BindFlags;
 		property unsigned int CPUAccessFlags;
 		property unsigned int MiscFlags;
-		property unsigned int StructureByteStride;
+		property size_t StructureByteStride;
 	};
 
 	public ref class GLTF_BufferDesc sealed
@@ -186,7 +186,7 @@ namespace WinRTGLTFParser
 		property unsigned int SysMemPitch;
 		property unsigned int SysMemSlicePitch;
 		property String^ BufferContentType;
-		property unsigned int Count;
+		property size_t Count;
 		property unsigned int accessorIdx;
 	};
 

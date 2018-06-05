@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "BufferCache.h"
 
-int BufferDescriptor::Hash()
+size_t BufferDescriptor::Hash()
 {
 	if (!_hashCalculated)
 	{

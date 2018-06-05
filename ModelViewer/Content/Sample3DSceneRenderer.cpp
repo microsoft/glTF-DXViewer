@@ -609,7 +609,7 @@ future<void> Sample3DSceneRenderer::CreateDeviceDependentResources()
 		DX::ThrowIfFailed(
 			m_deviceResources->GetD3DDevice()->CreateInputLayout(
 				SimpleVertexDesc,
-				ARRAYSIZE(SimpleVertexDesc),
+				2/*ARRAYSIZE(SimpleVertexDesc)*/,
 				&fileData[0],
 				fileData.size(),
 				&_lineDrawingInputLayout

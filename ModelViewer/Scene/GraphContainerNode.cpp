@@ -137,7 +137,7 @@ void GraphContainerNode::AddChild(shared_ptr<GraphNode> child)
 	_children.push_back(child);
 }
 
-int GraphContainerNode::NumChildren()
+size_t GraphContainerNode::NumChildren()
 {
 	return _children.size();
 }

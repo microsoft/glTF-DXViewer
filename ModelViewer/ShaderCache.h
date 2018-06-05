@@ -29,14 +29,14 @@ public:
 	shared_ptr<DeviceResources> DevResources() { return _deviceResources; }
 	const shared_ptr<DeviceResources> DevResources() const { return _deviceResources; }
 
-	int Hash();
+	size_t Hash();
 
 private:
 	bool _hashCalculated = false;
 	vector<const char *> _defines;
 	string _shaderName;
 	shared_ptr<DeviceResources> _deviceResources;
-	int _hash;
+	size_t _hash;
 };
 
 template <>
@@ -70,8 +70,8 @@ public:
 	shared_ptr<TShaderWrapper> FindOrCreateShader(ShaderDescriptor descriptor)
 	{
 		// get the hash value...
-		int hash = descriptor.Hash();
-		map<int, shared_ptr<TShaderWrapper>>::iterator res = _shaders.find(hash);
+		size_t hash = descriptor.Hash();
+		map<size_t, shared_ptr<TShaderWrapper>>::iterator res = _shaders.find(hash);
 		if (res != _shaders.end())
 			return (*res).second;
 
@@ -103,7 +103,7 @@ public:
 
 private:
 	ShaderCache() {}
-	map<int, shared_ptr<TShaderWrapper>> _shaders;
+	map<size_t, shared_ptr<TShaderWrapper>> _shaders;
 };
 
 class PixelShaderWrapper

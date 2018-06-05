@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "ShaderCache.h"
 
-int ShaderDescriptor::Hash()
+size_t ShaderDescriptor::Hash()
 {
 	if (!_hashCalculated)
 	{

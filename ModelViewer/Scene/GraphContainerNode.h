@@ -36,7 +36,7 @@ public:
 	virtual GraphNode *FindChildById(GUID id) override;
 
 	virtual void AddChild(shared_ptr<GraphNode> child);
-	virtual int NumChildren() override;
+	virtual size_t NumChildren() override;
 	virtual shared_ptr<GraphNode> GetChild(int i) override;
 	virtual const wstring& Name() const override;
 	virtual void SetName(const wstring& name)  override;

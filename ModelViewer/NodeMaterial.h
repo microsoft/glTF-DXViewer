@@ -54,7 +54,7 @@ public:
 
 	shared_ptr<TextureWrapper> HasTextureId(unsigned int idx);
 	bool HasTexture(unsigned int idx) { return _textures.find(idx) != _textures.end(); }
-	unsigned int GetNumTextures() { return _textures.size(); }
+	size_t GetNumTextures() { return _textures.size(); }
 
 	map<unsigned int, shared_ptr<TextureWrapper>>& Textures() { return _textures; }
 

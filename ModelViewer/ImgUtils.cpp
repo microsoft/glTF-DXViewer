@@ -4,7 +4,7 @@
 
 using namespace DX;
 
-vector<uint8_t> ImgUtils::LoadRGBAImage(void *imgFileData, int imgFileDataSize, uint32_t& width, uint32_t& height, 
+vector<uint8_t> ImgUtils::LoadRGBAImage(void *imgFileData, size_t imgFileDataSize, uint32_t& width, uint32_t& height, 
 	bool jpg, const wchar_t *filename)
 {
 	ComPtr<IWICImagingFactory> wicFactory;
@@ -15,7 +15,7 @@ vector<uint8_t> ImgUtils::LoadRGBAImage(void *imgFileData, int imgFileDataSize, 
 	ThrowIfFailed(wicFactory->CreateStream(&pIWICStream));
 
 	// Initialize the stream with the memory pointer and size.
-	ThrowIfFailed(pIWICStream->InitializeFromMemory(reinterpret_cast<BYTE*>(imgFileData), imgFileDataSize));
+	ThrowIfFailed(pIWICStream->InitializeFromMemory(reinterpret_cast<BYTE*>(imgFileData), static_cast<DWORD>(imgFileDataSize)));
 
 	ComPtr<IWICBitmapDecoder> decoder;
 	if (jpg)
