@@ -27,7 +27,7 @@ XMMATRIX GraphContainerNode::PreDraw(SceneContext& context, XMMATRIX model)
 	XMMATRIX mat;
 	if (_hasMatrix)
 	{
-		mat = _matrix;
+		mat = XMLoadFloat4x4(&_matrix);
 	}
 	else
 	{

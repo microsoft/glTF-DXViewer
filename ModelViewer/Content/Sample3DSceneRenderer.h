@@ -44,15 +44,6 @@ namespace ModelViewer
 		void StopTracking(float positionX, float positionY, VirtualKeyModifiers mod);
 		bool IsTracking() { return m_tracking; }
 		void NotifyDataChanged(DirectXPageViewModelData const& data);
-		void* operator new(size_t i)
-		{
-			return _mm_malloc(i, 16);
-		}
-
-		void operator delete(void* p)
-		{
-			_mm_free(p);
-		}
 
 	private:
 		void Rotate(float radians);
@@ -109,7 +100,7 @@ namespace ModelViewer
 		std::map<std::wstring, BufferWrapper> _buffers;
 
 		// System resources for cube geometry.
-		LineDrawingConstantBuffer _lineDrawingConstantBufferData;
+		//LineDrawingConstantBuffer _lineDrawingConstantBufferData;
 
 		uint32	m_indexCount;
 

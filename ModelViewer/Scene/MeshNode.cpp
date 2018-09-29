@@ -261,7 +261,7 @@ void MeshNode::CreateTransform(GLTF_TransformData^ data)
 	if (data->hasMatrix)
 	{
 		_hasMatrix = true;
-		XMFLOAT4X4 mat = 
+		_matrix = 
 		{
 			data->matrix[0], 
 			data->matrix[1],
@@ -281,8 +281,7 @@ void MeshNode::CreateTransform(GLTF_TransformData^ data)
 			data->matrix[15]
 		};
 
-		_matrix = XMLoadFloat4x4(&mat);
-		XMStoreFloat4x4(&BufferManager::Instance().MVPBuffer().BufferData().model, XMMatrixTranspose(_matrix));
+		XMStoreFloat4x4(&BufferManager::Instance().MVPBuffer().BufferData().model, XMMatrixTranspose(XMLoadFloat4x4(&_matrix)));
 	}
 	else
 	{
