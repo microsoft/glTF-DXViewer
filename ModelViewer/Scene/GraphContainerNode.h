@@ -53,16 +53,6 @@ public:
 
 	virtual BoundingBox<float> GetBoundingBox() override;
 
-	void* operator new(size_t i)
-	{
-		return _mm_malloc(i, 16);
-	}
-
-	void operator delete(void* p)
-	{
-		_mm_free(p);
-	}
-
 	bool IsEqual(const GraphContainerNode& other)
 	{
 		return _guid == other._guid;
@@ -214,7 +204,7 @@ public:
 	}
 
 protected:
-	XMMATRIX _matrix;
+	XMFLOAT4X4 _matrix;
 	bool _hasMatrix = false;
 
 	XMFLOAT3 _scale = { 1.0f, 1.0f, 1.0f };

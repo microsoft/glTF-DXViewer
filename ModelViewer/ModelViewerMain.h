@@ -40,17 +40,7 @@ namespace ModelViewer
 		virtual void OnDeviceLost();
 		virtual void OnDeviceRestored();
 
-		void SetBackgroundColour(XMVECTORF32 colour) { _backgroundColour = colour; }
-
-		void* operator new(size_t i)
-		{
-			return _mm_malloc(i, 16);
-		}
-
-		void operator delete(void* p)
-		{
-			_mm_free(p);
-		}
+		void SetBackgroundColour(XMVECTORF32 colour) { XMStoreFloat4(&_backgroundColour, colour); }
 
 	private:
 		void ProcessInput();
@@ -75,6 +65,6 @@ namespace ModelViewer
 		float m_pointerLocationY;
 		VirtualKeyModifiers m_mod;
 
-		XMVECTORF32 _backgroundColour;
+		XMFLOAT4 _backgroundColour;
 	};
 }
