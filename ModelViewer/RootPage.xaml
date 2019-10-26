@@ -32,6 +32,11 @@
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
             <NavigationViewItemSeparator/>
+            <NavigationViewItem x:Uid="ConnectNavItem" Content="Connect..." Tag="connect">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE703;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
         </NavigationView.MenuItems>
 
         <NavigationView.HeaderTemplate>

@@ -17,23 +17,11 @@ RootPageViewModel::RootPageViewModel()
 class LoadingWrapper
 {
 public:
-	LoadingWrapper(function<void()> ctor, function<void()> dtor) :
-		_dtor(dtor)
-	{
-		Schedule(ctor);
-	}
+	LoadingWrapper(function<void()> ctor, function<void()> dtor);
 
-	future<void> Schedule(function<void()> fn)
-	{
-		auto disp = Windows::ApplicationModel::Core::CoreApplication::MainView->CoreWindow->Dispatcher;
-		co_await disp->RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal,
-			ref new Windows::UI::Core::DispatchedHandler([fn]() { fn(); }));
-	}
+	future<void> Schedule(function<void()> fn);
 
-	~LoadingWrapper()
-	{
-		Schedule(_dtor);
-	}
+	~LoadingWrapper();
 
 private:
 	function<void()> _dtor;
@@ -102,4 +90,22 @@ void RootPageViewModel::Filename::set(String^ val)
 		return;
 	_filename = val;
 	OnPropertyChanged(getCallerName(__FUNCTION__));
+}
+
+inline LoadingWrapper::LoadingWrapper(function<void()> ctor, function<void()> dtor) :
+	_dtor(dtor)
+{
+	Schedule(ctor);
+}
+
+inline future<void> LoadingWrapper::Schedule(function<void()> fn)
+{
+	auto disp = Windows::ApplicationModel::Core::CoreApplication::MainView->CoreWindow->Dispatcher;
+	co_await disp->RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal,
+		ref new Windows::UI::Core::DispatchedHandler([fn]() { fn(); }));
+}
+
+inline LoadingWrapper::~LoadingWrapper()
+{
+	Schedule(_dtor);
 }

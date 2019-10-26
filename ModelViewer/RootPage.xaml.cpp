@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "RootPage.xaml.h"
 #include "DirectXPage.xaml.h"
+#include "ConnectPage.xaml.h"
 #include <ppltasks.h>
 #include <experimental/resumable>
 #include <pplawait.h>
@@ -66,7 +67,15 @@ void RootPage::LoadInternalState(IPropertySet^ state)
 
 void ModelViewer::RootPage::NavView_ItemInvoked(Windows::UI::Xaml::Controls::NavigationView^ sender, Windows::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs^ args)
 {
-
+	auto tag = args->InvokedItemContainer->Tag->ToString();
+	if (tag == "home")
+	{
+		ContentFrame->Navigate(DirectXPage::typeid);
+	}
+	else if (tag == "connect")
+	{
+		ContentFrame->Navigate(ConnectPage::typeid);
+	}
 }
 
 void ModelViewer::RootPage::NavView_SelectionChanged(Windows::UI::Xaml::Controls::NavigationView^ sender, Windows::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs^ args)

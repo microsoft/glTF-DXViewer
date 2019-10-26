@@ -27,6 +27,7 @@
 
 #include "ViewModels/RootPageViewModel.h"
 #include "ViewModels/DirectXPageViewModel.h"
+#include "ViewModels/ConnectPageViewModel.h"
 #include "GlyphConverter.h"
 #include "BooleanToVisibilityConverter.h"
 #include "FileSystemData.h"

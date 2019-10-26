@@ -284,6 +284,9 @@
     <ClInclude Include="Common\BindableBase.h" />
     <ClInclude Include="BufferManager.h" />
     <ClInclude Include="Common\DeviceResources.h" />
+    <ClInclude Include="ConnectPage.xaml.h">
+      <DependentUpon>ConnectPage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="Container.h" />
     <ClInclude Include="DecimalPlacesConverter.h" />
     <ClInclude Include="DelegateCommand.h" />
@@ -299,6 +302,7 @@
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Subject.h" />
     <ClInclude Include="sub_token.h" />
+    <ClInclude Include="ViewModels\ConnectPageViewModel.h" />
     <ClInclude Include="ViewModels\TransformViewModel.h" />
     <ClInclude Include="ViewModels\DirectXPageViewModel.h" />
     <ClInclude Include="DXGrid.h" />
@@ -340,6 +344,9 @@
     <ClCompile Include="Common\BindableBase.cpp" />
     <ClCompile Include="BufferManager.cpp" />
     <ClCompile Include="Common\DeviceResources.cpp" />
+    <ClCompile Include="ConnectPage.xaml.cpp">
+      <DependentUpon>ConnectPage.xaml</DependentUpon>
+    </ClCompile>
     <ClCompile Include="Container.cpp" />
     <ClCompile Include="DecimalPlacesConverter.cpp" />
     <ClCompile Include="DelegateCommand.cpp" />
@@ -352,6 +359,7 @@
     <ClCompile Include="Scene\SceneContext.cpp" />
     <ClCompile Include="ShaderCache.cpp" />
     <ClCompile Include="sub_token.cpp" />
+    <ClCompile Include="ViewModels\ConnectPageViewModel.cpp" />
     <ClCompile Include="ViewModels\TransformViewModel.cpp" />
     <ClCompile Include="ViewModels\DirectXPageViewModel.cpp" />
     <ClCompile Include="DXGrid.cpp" />
@@ -415,6 +423,9 @@
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ConnectPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="DirectXPage.xaml">
       <SubType>Designer</SubType>
     </Page>
