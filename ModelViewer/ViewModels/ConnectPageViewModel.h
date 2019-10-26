@@ -21,6 +21,7 @@ namespace ViewModels
 
 	private:
 		void ExecuteConnectCommand(Object^ param);
+		std::future<void> Connect();
 
 		bool _loading = false;
 		String^ _ipAddress;

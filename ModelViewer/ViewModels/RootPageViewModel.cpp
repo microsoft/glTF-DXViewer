@@ -5,6 +5,7 @@
 #include "Utility.h"
 #include <experimental/resumable>
 #include <pplawait.h>
+#include "LoadingWrapper.h"
 
 using namespace ViewModels;
 using namespace Windows::Storage::Pickers;
@@ -14,18 +15,6 @@ RootPageViewModel::RootPageViewModel()
 	LoadFileCommand = ref new DelegateCommand(ref new ExecuteDelegate(this, &RootPageViewModel::ExecuteLoadCommand), nullptr);
 }
 
-class LoadingWrapper
-{
-public:
-	LoadingWrapper(function<void()> ctor, function<void()> dtor);
-
-	future<void> Schedule(function<void()> fn);
-
-	~LoadingWrapper();
-
-private:
-	function<void()> _dtor;
-};
 
 future<shared_ptr<GraphNode>> RootPageViewModel::LoadFileAsync()
 {
@@ -90,22 +79,4 @@ void RootPageViewModel::Filename::set(String^ val)
 		return;
 	_filename = val;
 	OnPropertyChanged(getCallerName(__FUNCTION__));
-}
-
-inline LoadingWrapper::LoadingWrapper(function<void()> ctor, function<void()> dtor) :
-	_dtor(dtor)
-{
-	Schedule(ctor);
-}
-
-inline future<void> LoadingWrapper::Schedule(function<void()> fn)
-{
-	auto disp = Windows::ApplicationModel::Core::CoreApplication::MainView->CoreWindow->Dispatcher;
-	co_await disp->RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal,
-		ref new Windows::UI::Core::DispatchedHandler([fn]() { fn(); }));
-}
-
-inline LoadingWrapper::~LoadingWrapper()
-{
-	Schedule(_dtor);
 }

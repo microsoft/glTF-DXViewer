@@ -137,6 +137,7 @@
     </ClCompile>
     <ClCompile Include="sub_token.cpp" />
     <ClCompile Include="ViewModels\ConnectPageViewModel.cpp" />
+    <ClCompile Include="LoadingWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -210,6 +211,7 @@
     <ClInclude Include="Subject.h" />
     <ClInclude Include="sub_token.h" />
     <ClInclude Include="ViewModels\ConnectPageViewModel.h" />
+    <ClInclude Include="LoadingWrapper.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\StoreLogo.png">

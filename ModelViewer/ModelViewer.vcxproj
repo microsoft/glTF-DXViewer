@@ -295,6 +295,7 @@
     <ClInclude Include="FileSystemData.h" />
     <ClInclude Include="GlyphConverter.h" />
     <ClInclude Include="ImgUtils.h" />
+    <ClInclude Include="LoadingWrapper.h" />
     <ClInclude Include="ModelBufferManager.h" />
     <ClInclude Include="RenderTexture.h" />
     <ClInclude Include="Scene\SceneContext.h" />
@@ -354,6 +355,7 @@
     <ClCompile Include="DXUtils.cpp" />
     <ClCompile Include="GlyphConverter.cpp" />
     <ClCompile Include="ImgUtils.cpp" />
+    <ClCompile Include="LoadingWrapper.cpp" />
     <ClCompile Include="ModelBufferManager.cpp" />
     <ClCompile Include="RenderTexture.cpp" />
     <ClCompile Include="Scene\SceneContext.cpp" />
