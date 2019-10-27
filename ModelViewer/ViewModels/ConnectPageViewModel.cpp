@@ -8,6 +8,7 @@
 
 using namespace ViewModels;
 using namespace std::chrono;
+using namespace std::chrono_literals;
 using namespace winrt::Windows::Graphics::Holographic;
 using namespace winrt::Microsoft::Holographic::AppRemoting;
 using namespace winrt;
@@ -21,9 +22,16 @@ void ConnectPageViewModel::ExecuteConnectCommand(Object^ param)
 {
 }
 
+void ConnectPageViewModel::OnRemoteConnected(RemoteContext context)
+{
+
+}
+
 future<void> ConnectPageViewModel::Connect()
 {
 	Utility::Out(L"At Start of Connect");
+
+	co_await 5s;
 
 	// RAII-style for ensuring that the progress gets cleared robustly
 	auto loader = make_unique<LoadingWrapper>([this]() { Loading = true; }, [this]() { Loading = false; });
@@ -37,44 +45,45 @@ future<void> ConnectPageViewModel::Connect()
 		winrt::weak_ref<winrt::Microsoft::Holographic::AppRemoting::IRemoteContext> remoteContextWeakRef = _remoteContext;
 
 		_onConnectedEventRevoker = _remoteContext.OnConnected(winrt::auto_revoke, [this, remoteContextWeakRef]() {
-			if (auto remoteContext = remoteContextWeakRef.get())
-			{
-				// Update UI state
-			}
+				if (auto remoteContext = remoteContextWeakRef.get())
+				{
+					// Update UI state
+					//this->OnRemoteConnected(remoteContext.as<RemoteContext>());
+				}
 			});
 		_onDisconnectedEventRevoker =
 			_remoteContext.OnDisconnected(winrt::auto_revoke, [this, remoteContextWeakRef](ConnectionFailureReason failureReason) {
-			if (auto remoteContext = remoteContextWeakRef.get())
-			{
-				Utility::Out(L"Disconnected with reason %d", failureReason);
-
-				// Update UI
-
-				// Reconnect if this is a transient failure.
-				if (failureReason == ConnectionFailureReason::HandshakeUnreachable ||
-					failureReason == ConnectionFailureReason::TransportUnreachable ||
-					failureReason == ConnectionFailureReason::ConnectionLost)
+				if (auto remoteContext = remoteContextWeakRef.get())
 				{
-					Utility::Out(L"Reconnecting...");
+					Utility::Out(L"Disconnected with reason %d", failureReason);
 
-					//ConnectOrListen();
-				}
-				// Failure reason None indicates a normal disconnect.
-				else if (failureReason != ConnectionFailureReason::None)
-				{
-					Utility::Out(L"Disconnected with unrecoverable error, not attempting to reconnect.");
-				}
-			}
-				});
+					// Update UI
 
-		_onListeningEventRevoker = _remoteContext.OnListening(winrt::auto_revoke, [this, remoteContextWeakRef]() {
-			if (auto remoteContext = remoteContextWeakRef.get())
-			{
-				// Update UI state
-			}
+					// Reconnect if this is a transient failure.
+					if (failureReason == ConnectionFailureReason::HandshakeUnreachable ||
+						failureReason == ConnectionFailureReason::TransportUnreachable ||
+						failureReason == ConnectionFailureReason::ConnectionLost)
+					{
+						Utility::Out(L"Reconnecting...");
+
+						//ConnectOrListen();
+					}
+					// Failure reason None indicates a normal disconnect.
+					else if (failureReason != ConnectionFailureReason::None)
+					{
+						Utility::Out(L"Disconnected with unrecoverable error, not attempting to reconnect.");
+					}
+				}
 			});
 
-		_remoteContext.Connect(_ipAddress->Data, 8265);
+		_onListeningEventRevoker = _remoteContext.OnListening(winrt::auto_revoke, [this, remoteContextWeakRef](uint16_t port) {
+				if (auto remoteContext = remoteContextWeakRef.get())
+				{
+					// Update UI state
+				}
+			});
+
+		_remoteContext.Connect(_ipAddress->Data(), 8265);
 	}
 	catch (winrt::hresult_error & e)
 	{

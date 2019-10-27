@@ -20,6 +20,8 @@ namespace ViewModels
 		void ExecuteConnectCommand(Object^ param);
 		std::future<void> Connect();
 
+		void ConnectPageViewModel::OnRemoteConnected(winrt::Microsoft::Holographic::AppRemoting::RemoteContext context);
+
 		bool _loading = false;
 		Platform::String^ _ipAddress = L"127.0.0.1";
 
@@ -27,9 +29,9 @@ namespace ViewModels
 		winrt::Microsoft::Holographic::AppRemoting::RemoteContext _remoteContext = nullptr;
 		winrt::Windows::Graphics::Holographic::HolographicSpace _holographicSpace = nullptr;
 
-		winrt::impl::consume_Microsoft_Holographic_AppRemoting_IRemoteContext<winrt::Microsoft::Holographic::AppRemoting::IRemoteContext>::OnConnected_revoker _onConnectedEventRevoker;
-		winrt::impl::consume_Microsoft_Holographic_AppRemoting_IRemoteContext<winrt::Microsoft::Holographic::AppRemoting::IRemoteContext>::OnDisconnected_revoker _onDisconnectedEventRevoker;
-		winrt::impl::consume_Microsoft_Holographic_AppRemoting_IRemoteContext<winrt::Microsoft::Holographic::AppRemoting::IRemoteContext>::OnListening_revoker _onListeningEventRevoker;
+		winrt::Microsoft::Holographic::AppRemoting::IRemoteContext::OnConnected_revoker _onConnectedEventRevoker;
+		winrt::Microsoft::Holographic::AppRemoting::IRemoteContext::OnDisconnected_revoker _onDisconnectedEventRevoker;
+		winrt::Microsoft::Holographic::AppRemoting::IRemoteContext::OnListening_revoker _onListeningEventRevoker;
 	};
 }
 
