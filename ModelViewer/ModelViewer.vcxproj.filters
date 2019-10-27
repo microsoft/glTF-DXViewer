@@ -136,8 +136,10 @@
       <Filter>ViewModels</Filter>
     </ClCompile>
     <ClCompile Include="sub_token.cpp" />
-    <ClCompile Include="ViewModels\ConnectPageViewModel.cpp" />
     <ClCompile Include="LoadingWrapper.cpp" />
+    <ClCompile Include="ViewModels\ConnectPageViewModel.cpp">
+      <Filter>ViewModels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -210,8 +212,10 @@
     </ClInclude>
     <ClInclude Include="Subject.h" />
     <ClInclude Include="sub_token.h" />
-    <ClInclude Include="ViewModels\ConnectPageViewModel.h" />
     <ClInclude Include="LoadingWrapper.h" />
+    <ClInclude Include="ViewModels\ConnectPageViewModel.h">
+      <Filter>ViewModels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\StoreLogo.png">
