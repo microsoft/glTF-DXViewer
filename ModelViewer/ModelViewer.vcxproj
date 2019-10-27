@@ -287,7 +287,9 @@
     <ClInclude Include="BufferCache.h" />
     <ClInclude Include="Common\BindableBase.h" />
     <ClInclude Include="BufferManager.h" />
+    <ClInclude Include="Common\CameraResources.h" />
     <ClInclude Include="Common\DeviceResources.h" />
+    <ClInclude Include="Common\HolographicDeviceResources.h" />
     <ClInclude Include="ConnectPage.xaml.h">
       <DependentUpon>ConnectPage.xaml</DependentUpon>
     </ClInclude>
@@ -298,6 +300,7 @@
     <ClInclude Include="DXUtils.h" />
     <ClInclude Include="FileSystemData.h" />
     <ClInclude Include="GlyphConverter.h" />
+    <ClInclude Include="IDeviceNotify.h" />
     <ClInclude Include="ImgUtils.h" />
     <ClInclude Include="LoadingWrapper.h" />
     <ClInclude Include="ModelBufferManager.h" />
@@ -348,7 +351,9 @@
     <ClCompile Include="BufferCache.cpp" />
     <ClCompile Include="Common\BindableBase.cpp" />
     <ClCompile Include="BufferManager.cpp" />
+    <ClCompile Include="Common\CameraResources.cpp" />
     <ClCompile Include="Common\DeviceResources.cpp" />
+    <ClCompile Include="Common\HolographicDeviceResources.cpp" />
     <ClCompile Include="ConnectPage.xaml.cpp">
       <DependentUpon>ConnectPage.xaml</DependentUpon>
     </ClCompile>

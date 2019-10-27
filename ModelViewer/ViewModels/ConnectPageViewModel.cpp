@@ -20,6 +20,7 @@ ConnectPageViewModel::ConnectPageViewModel()
 
 void ConnectPageViewModel::ExecuteConnectCommand(Object^ param)
 {
+	Connect();
 }
 
 void ConnectPageViewModel::OnRemoteConnected(RemoteContext context)
@@ -41,6 +42,7 @@ future<void> ConnectPageViewModel::Connect()
 	{
 		CreateRemoteContext(_remoteContext, 20000, false, PreferredVideoCodec::Default);
 		_holographicSpace = HolographicSpace::CreateForCoreWindow(nullptr);
+		//_holographicSpace->SetDirect3D11Device();
 		
 		winrt::weak_ref<winrt::Microsoft::Holographic::AppRemoting::IRemoteContext> remoteContextWeakRef = _remoteContext;
 

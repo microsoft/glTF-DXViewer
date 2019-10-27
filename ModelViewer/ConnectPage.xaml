@@ -25,12 +25,12 @@
         </Grid.RowDefinitions>
 
         <TextBlock>IP Address:</TextBlock>
-        <TextBox Grid.Column="1" Text="{Binding IPAddress, Mode=TwoWay}"></TextBox>
+        <TextBox Grid.Column="1" Text="{x:Bind ViewModel.IPAddress, Mode=TwoWay}"></TextBox>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-            <Button>Connect</Button>
+            <Button Command="{x:Bind ViewModel.ConnectCommand}">Connect</Button>
             <ProgressBar Height="10" 
-                         IsIndeterminate="{Binding Loading, Mode=OneWay}"
-                         Visibility="{Binding Loading, Converter={StaticResource booleanToVisibilityConverter}, Mode=OneWay}">
+                         IsIndeterminate="{x:Bind ViewModel.Loading, Mode=OneWay}"
+                         Visibility="{x:Bind ViewModel.Loading, Converter={StaticResource booleanToVisibilityConverter}, Mode=OneWay}">
             </ProgressBar>
         </StackPanel>
     </Grid>
