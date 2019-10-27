@@ -1,11 +1,11 @@
 #pragma once
 
 #include "Common/ViewModelBase.h"
+#include <winrt/Microsoft.Holographic.AppRemoting.h>
 
 namespace ViewModels
 {
 	using namespace Common;
-	using namespace std;
 	using namespace Windows::UI::Xaml::Input;
 	using namespace Platform;
 
@@ -25,6 +25,9 @@ namespace ViewModels
 
 		bool _loading = false;
 		String^ _ipAddress;
+
+		// RemoteContext used to connect with a Holographic Remoting player and display rendered frames
+		winrt::Microsoft::Holographic::AppRemoting::RemoteContext _remoteContext = nullptr;
 	};
 }
 

@@ -9,6 +9,7 @@
 
 using namespace ViewModels;
 using namespace Windows::Storage::Pickers;
+using namespace std;
 
 RootPageViewModel::RootPageViewModel()
 {

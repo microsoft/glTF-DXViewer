@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include <robuffer.h>  
 #include <wrl.h>
 #include <wrl/client.h>
 #include <dxgi1_4.h>
@@ -15,7 +16,7 @@
 #include <concrt.h>
 #include <collection.h>
 #include "App.xaml.h"
-#include "Utility.h"
+#include "Utility.h" 
 
 #include <future>
 #include <experimental/resumable>

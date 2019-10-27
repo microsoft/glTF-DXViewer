@@ -7,7 +7,6 @@
 namespace ViewModels
 {
 	using namespace Common;
-	using namespace std;
 	using namespace Windows::UI::Xaml::Input;
 	using namespace Platform;
 
@@ -23,8 +22,8 @@ namespace ViewModels
 
 	private:
 		void ExecuteLoadCommand(Object^ param);
-		future<shared_ptr<GraphNode>> RootPageViewModel::LoadFileAsync();
-		future<void> RootPageViewModel::Load();
+		std::future<std::shared_ptr<GraphNode>> RootPageViewModel::LoadFileAsync();
+		std::future<void> RootPageViewModel::Load();
 
 		bool _loading = false;
 		String^ _filename;

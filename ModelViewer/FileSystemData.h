@@ -14,14 +14,12 @@
 
 namespace ModelViewer
 {
-	using namespace std;
-
     [Windows::UI::Xaml::Data::Bindable]
     [Windows::Foundation::Metadata::WebHostHidden]
     public ref class GraphNodeData sealed
     {
 	internal:
-		GraphNodeData(shared_ptr<GraphNode> node) :
+		GraphNodeData(std::shared_ptr<GraphNode> node) :
 			_node(node)
 		{
 			this->Name = ref new String(node->Name().c_str());
@@ -53,7 +51,7 @@ namespace ModelViewer
     private:
         Platform::String^ name = nullptr;
         bool isFolder = false;
-		shared_ptr<GraphNode> _node;
+		std::shared_ptr<GraphNode> _node;
     };
 }
 

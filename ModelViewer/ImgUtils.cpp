@@ -4,7 +4,7 @@
 
 using namespace DX;
 
-vector<uint8_t> ImgUtils::LoadRGBAImage(void *imgFileData, size_t imgFileDataSize, uint32_t& width, uint32_t& height, 
+vector<unsigned char> ImgUtils::LoadRGBAImage(void *imgFileData, size_t imgFileDataSize, uint32_t& width, uint32_t& height, 
 	bool jpg, const wchar_t *filename)
 {
 	ComPtr<IWICImagingFactory> wicFactory;

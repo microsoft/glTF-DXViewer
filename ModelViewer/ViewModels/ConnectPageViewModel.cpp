@@ -27,6 +27,8 @@ future<void> ConnectPageViewModel::Connect()
 	//co_await 5s;
 
 	Utility::Out(L"Connected");
+
+	co_return;
 }
 
 bool ConnectPageViewModel::Loading::get()

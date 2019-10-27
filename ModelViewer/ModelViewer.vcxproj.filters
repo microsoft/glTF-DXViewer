@@ -444,6 +444,7 @@
     <None Include="ModelViewer_TemporaryKey.pfx" />
     <None Include="Assets\Shaders\pbrpixel.hlsl" />
     <None Include="Assets\Shaders\pbrvertex.hlsl" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="DirectXPage.xaml" />
