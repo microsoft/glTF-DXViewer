@@ -4,9 +4,13 @@
 #include "LoadingWrapper.h"
 #include <pplawait.h>
 #include <chrono>
+#include <HolographicAppRemoting\Streamer.h>
 
 using namespace ViewModels;
 using namespace std::chrono;
+using namespace winrt::Windows::Graphics::Holographic;
+using namespace winrt::Microsoft::Holographic::AppRemoting;
+using namespace winrt;
 
 ConnectPageViewModel::ConnectPageViewModel()
 {
@@ -24,7 +28,58 @@ future<void> ConnectPageViewModel::Connect()
 	// RAII-style for ensuring that the progress gets cleared robustly
 	auto loader = make_unique<LoadingWrapper>([this]() { Loading = true; }, [this]() { Loading = false; });
 
-	//co_await 5s;
+	// Create on a thread pool thread?
+	try
+	{
+		CreateRemoteContext(_remoteContext, 20000, false, PreferredVideoCodec::Default);
+		_holographicSpace = HolographicSpace::CreateForCoreWindow(nullptr);
+		
+		winrt::weak_ref<winrt::Microsoft::Holographic::AppRemoting::IRemoteContext> remoteContextWeakRef = _remoteContext;
+
+		_onConnectedEventRevoker = _remoteContext.OnConnected(winrt::auto_revoke, [this, remoteContextWeakRef]() {
+			if (auto remoteContext = remoteContextWeakRef.get())
+			{
+				// Update UI state
+			}
+			});
+		_onDisconnectedEventRevoker =
+			_remoteContext.OnDisconnected(winrt::auto_revoke, [this, remoteContextWeakRef](ConnectionFailureReason failureReason) {
+			if (auto remoteContext = remoteContextWeakRef.get())
+			{
+				Utility::Out(L"Disconnected with reason %d", failureReason);
+
+				// Update UI
+
+				// Reconnect if this is a transient failure.
+				if (failureReason == ConnectionFailureReason::HandshakeUnreachable ||
+					failureReason == ConnectionFailureReason::TransportUnreachable ||
+					failureReason == ConnectionFailureReason::ConnectionLost)
+				{
+					Utility::Out(L"Reconnecting...");
+
+					//ConnectOrListen();
+				}
+				// Failure reason None indicates a normal disconnect.
+				else if (failureReason != ConnectionFailureReason::None)
+				{
+					Utility::Out(L"Disconnected with unrecoverable error, not attempting to reconnect.");
+				}
+			}
+				});
+
+		_onListeningEventRevoker = _remoteContext.OnListening(winrt::auto_revoke, [this, remoteContextWeakRef]() {
+			if (auto remoteContext = remoteContextWeakRef.get())
+			{
+				// Update UI state
+			}
+			});
+
+		_remoteContext.Connect(_ipAddress->Data, 8265);
+	}
+	catch (winrt::hresult_error & e)
+	{
+		Utility::Out(L"Connect failed with hr = 0x%08X", e.code());
+	}
 
 	Utility::Out(L"Connected");
 
