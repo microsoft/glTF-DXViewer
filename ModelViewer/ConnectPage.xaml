@@ -5,6 +5,7 @@
     xmlns:local="using:ModelViewer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -14,24 +15,38 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid>
+    <Grid Padding="4" Margin="4">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock>IP Address:</TextBlock>
+        <TextBlock Padding="4" Margin="4">IP Address:</TextBlock>
         <TextBox Grid.Column="1" Text="{x:Bind ViewModel.IPAddress, Mode=TwoWay}"></TextBox>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
             <Button Command="{x:Bind ViewModel.ConnectCommand}">Connect</Button>
-            <ProgressBar Height="10" 
-                         IsIndeterminate="{x:Bind ViewModel.Loading, Mode=OneWay}"
-                         Visibility="{x:Bind ViewModel.Loading, Converter={StaticResource booleanToVisibilityConverter}, Mode=OneWay}">
-            </ProgressBar>
-        </StackPanel>
+            <ProgressRing Height="40" Width="40" Grid.Column="1" 
+                         Visibility="{x:Bind ViewModel.Loading, Converter={StaticResource booleanToVisibilityConverter}, Mode=OneWay}"
+                          IsActive="{x:Bind ViewModel.Loading, Mode=OneWay}">
+            </ProgressRing>
+        </Grid>
+        <ScrollViewer 
+            Grid.Row="2" 
+            Grid.ColumnSpan="2" 
+            VerticalScrollMode="Enabled" HorizontalScrollMode="Disabled"
+            Margin="4,6,-4,-6">
+            <TextBlock 
+                       Text="{x:Bind ViewModel.StatusText, Mode=OneWay}" 
+                       ></TextBlock>
+        </ScrollViewer>
     </Grid>
 </Page>
