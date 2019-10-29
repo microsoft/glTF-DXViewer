@@ -11,6 +11,8 @@ using namespace Concurrency;
 ModelViewerMain::ModelViewerMain(const shared_ptr<DeviceResources>& deviceResources) :
 	m_deviceResources(deviceResources), m_pointerLocationX(0.0f)
 {
+	m_remoteRenderer = Container::Instance().ResolveRemoteRenderer();
+
 	// Register to be notified if the Device is lost or recreated
 	m_deviceResources->RegisterDeviceNotify(this);
 
@@ -122,6 +124,12 @@ bool ModelViewerMain::Render()
 	// TODO: Replace this with your app's content rendering functions.
 	m_sceneRenderer->Render();
 	m_fpsTextRenderer->Render();
+
+	// Putting this here for now but bear in mind it might make more ense for this to be called from elsewhere..
+	// The general scheme is to use the HolographicSpace to retrieve the next HolographicFrame then we render to 
+	// the HolographicFrame... Experimenting with this for now...
+
+
 
 	return true;
 }

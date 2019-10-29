@@ -146,6 +146,7 @@
     <ClCompile Include="Common\CameraResources.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="RemoteRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -231,6 +232,7 @@
     <ClInclude Include="Common\CameraResources.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="RemoteRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\StoreLogo.png">

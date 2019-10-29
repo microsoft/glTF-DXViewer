@@ -93,6 +93,9 @@ namespace DXHelper
             return m_wicFactory.get();
         }
 
+		// Added as a hack while trying to get things to compile
+		ID3D11DeviceContext3* GetD3DDeviceContext() { return m_d3dContext.get(); }
+
     protected:
         void CreateDeviceResources();
 

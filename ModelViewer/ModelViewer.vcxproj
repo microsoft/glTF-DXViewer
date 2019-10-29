@@ -304,6 +304,7 @@
     <ClInclude Include="ImgUtils.h" />
     <ClInclude Include="LoadingWrapper.h" />
     <ClInclude Include="ModelBufferManager.h" />
+    <ClInclude Include="RemoteRenderer.h" />
     <ClInclude Include="RenderTexture.h" />
     <ClInclude Include="Scene\SceneContext.h" />
     <ClInclude Include="ShaderCache.h" />
@@ -366,6 +367,7 @@
     <ClCompile Include="ImgUtils.cpp" />
     <ClCompile Include="LoadingWrapper.cpp" />
     <ClCompile Include="ModelBufferManager.cpp" />
+    <ClCompile Include="RemoteRenderer.cpp" />
     <ClCompile Include="RenderTexture.cpp" />
     <ClCompile Include="Scene\SceneContext.cpp" />
     <ClCompile Include="ShaderCache.cpp" />

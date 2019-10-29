@@ -21,23 +21,16 @@ namespace ViewModels
 
 	private:
 		void ExecuteConnectCommand(Object^ param);
-		std::future<void> Connect();
+		std::future<void> ConnectAsync();
 
-		void ConnectPageViewModel::OnRemoteConnected(winrt::Microsoft::Holographic::AppRemoting::RemoteContext context);
-		std::future<void> SetStatusText(String^ text);
+		void OnRemoteConnected(winrt::Microsoft::Holographic::AppRemoting::RemoteContext context);
+		std::future<void> SetStatusTextAsync(wchar_t* text);
 
 		bool _loading = false;
 		Platform::String^ _statusText;
 		Platform::String^ _ipAddress = L"127.0.0.1";
 
-		// RemoteContext used to connect with a Holographic Remoting player and display rendered frames
-		winrt::Microsoft::Holographic::AppRemoting::RemoteContext _remoteContext = nullptr;
-		winrt::Windows::Graphics::Holographic::HolographicSpace _holographicSpace = nullptr;
-		std::shared_ptr<DXHelper::HolographicDeviceResources> _deviceResources;
-
-		winrt::Microsoft::Holographic::AppRemoting::IRemoteContext::OnConnected_revoker _onConnectedEventRevoker;
-		winrt::Microsoft::Holographic::AppRemoting::IRemoteContext::OnDisconnected_revoker _onDisconnectedEventRevoker;
-		winrt::Microsoft::Holographic::AppRemoting::IRemoteContext::OnListening_revoker _onListeningEventRevoker;
+		std::shared_ptr<RemoteRenderer> _remoteRenderer;
 	};
 }
 
