@@ -156,7 +156,7 @@ TreeViewNode^ DirectXPage::AddTreeItemsRecursive(shared_ptr<GraphNode> node, Tre
 	parent->IsExpanded = true;
 	for (size_t i = 0; i < node->NumChildren(); i++)
 	{
-		auto child = node->GetChild(i);
+		auto child = node->GetChild(static_cast<int>(i));
 		TreeViewNode^ treeNode;
 		if (dynamic_cast<MeshNode *>(child.get()))
 		{

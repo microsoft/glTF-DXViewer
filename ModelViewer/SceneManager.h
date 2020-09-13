@@ -6,7 +6,6 @@
 // Just using this singleton for the time-being until it becomes clearer on how
 // to best structure..
 //
-using namespace std;
 using namespace DX;
 using namespace ModelViewer;
 
@@ -15,14 +14,14 @@ class SceneManager : public Singleton<SceneManager>
 	friend class Singleton<SceneManager>;
 
 public:
-	shared_ptr<RootNode> Current();
-	const shared_ptr<RootNode> Current() const;
-	void AddNode(shared_ptr<GraphNode> newNode);
+	std::shared_ptr<RootNode> Current();
+	const std::shared_ptr<RootNode> Current() const;
+	void AddNode(std::shared_ptr<GraphNode> newNode);
 
-	void SetDevResources(const shared_ptr<DeviceResources>& deviceResources);
-	shared_ptr<DeviceResources> DevResources() { return _deviceResources; }
+	void SetDevResources(const std::shared_ptr<DeviceResources>& deviceResources);
+	std::shared_ptr<DeviceResources> DevResources() { return _deviceResources; }
 
-	sub_token RegisterForUpdates(function<void(SceneManager const&)> slot)
+	sub_token RegisterForUpdates(std::function<void(SceneManager const&)> slot)
 	{
 		return SceneChanged.subscribe(slot);
 	}
@@ -32,13 +31,13 @@ public:
 		conn.disconnect();
 	}
 
-	sub_token RegisterForSelectionChanged(function<void(shared_ptr<GraphNode>)> slot)
+	sub_token RegisterForSelectionChanged(std::function<void(std::shared_ptr<GraphNode>)> slot)
 	{
 		return SelectionChanged.subscribe(slot);
 	}
 
-	void SetSelected(shared_ptr<GraphNode> node);
-	shared_ptr<GraphNode> GetSelected();
+	void SetSelected(std::shared_ptr<GraphNode> node);
+	std::shared_ptr<GraphNode> GetSelected();
 
 protected:
 	SceneManager();
@@ -46,9 +45,9 @@ protected:
 private:
 
 	// Just have once scene for now..
-	shared_ptr<RootNode> _sceneNode;
-	shared_ptr<DeviceResources> _deviceResources;
+	std::shared_ptr<RootNode> _sceneNode;
+	std::shared_ptr<DeviceResources> _deviceResources;
 
 	subject<SceneManager const&> SceneChanged;
-	subject<shared_ptr<GraphNode>> SelectionChanged;
+	subject<std::shared_ptr<GraphNode>> SelectionChanged;
 };

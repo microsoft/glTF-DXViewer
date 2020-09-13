@@ -9,7 +9,7 @@ using namespace Concurrency;
 
 // Loads and initializes application assets when the application is loaded.
 ModelViewerMain::ModelViewerMain(const shared_ptr<DeviceResources>& deviceResources) :
-	m_deviceResources(deviceResources), m_pointerLocationX(0.0f)
+	m_deviceResources(deviceResources), m_pointerLocationX(0.0f), m_renderTexture(make_unique<RenderTexture>(deviceResources))
 {
 	// Register to be notified if the Device is lost or recreated
 	m_deviceResources->RegisterDeviceNotify(this);

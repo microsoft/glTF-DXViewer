@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "SceneManager.h"
 
+using namespace std;
+
 SceneManager::SceneManager()
 {
 	_sceneNode = make_shared<RootNode>(-1);
@@ -22,7 +24,7 @@ void SceneManager::AddNode(shared_ptr<GraphNode> newNode)
 	SceneChanged.notify(*this);
 }
 
-void SceneManager::SetDevResources(const std::shared_ptr<DX::DeviceResources>& deviceResources)
+void SceneManager::SetDevResources(const shared_ptr<DX::DeviceResources>& deviceResources)
 {
 	_deviceResources = deviceResources;
 }

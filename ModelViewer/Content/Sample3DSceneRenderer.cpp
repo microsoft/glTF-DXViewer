@@ -1,5 +1,4 @@
 ﻿#include "pch.h"
-#include <robuffer.h>  
 #include "Sample3DSceneRenderer.h"
 
 #include "..\Common\DirectXHelper.h"
