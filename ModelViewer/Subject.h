@@ -5,7 +5,6 @@
 #include "sub_token.h"
 
 using namespace std::placeholders;
-using namespace std;
 
 template <typename... Args>
 class subject
@@ -19,7 +18,7 @@ public:
 		}
 	}
 
-	sub_token subscribe(function<void(Args...)> fn)
+	sub_token subscribe(std::function<void(Args...)> fn)
 	{
 		sub_token tk;
 		_map[tk] = fn;
@@ -39,5 +38,5 @@ public:
 	}
 
 private:
-	map<sub_token, function<void(Args...)>> _map;
+	map<sub_token, std::function<void(Args...)>> _map;
 };

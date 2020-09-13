@@ -8,7 +8,6 @@
 #include "SceneContext.h"
 #include "Utility.h"
 
-using namespace std;
 using namespace DX;
 using namespace WinRTGLTFParser;
 using namespace DirectX;
@@ -27,22 +26,22 @@ public:
 	virtual XMMATRIX PreDraw(SceneContext& context, XMMATRIX model);
 	virtual void Draw(SceneContext& context, XMMATRIX model);
 	virtual void CreateDeviceDependentResources();
-	virtual void Initialise(const shared_ptr<DeviceResources>& deviceResources);
+	virtual void Initialise(const std::shared_ptr<DeviceResources>& deviceResources);
 
 	virtual void AfterLoad() override { m_loadingComplete = true; };
-	virtual void ForAllChildrenRecursive(function<void(GraphNode&)> func) override;
-	virtual void ForAllChildrenRecursiveUntil(function<bool(GraphNode&)> func) override;
+	virtual void ForAllChildrenRecursive(std::function<void(GraphNode&)> func) override;
+	virtual void ForAllChildrenRecursiveUntil(std::function<bool(GraphNode&)> func) override;
 	virtual GraphNode *FindChildByIndex(int index) override;
 	virtual GraphNode *FindChildById(GUID id) override;
 
-	virtual void AddChild(shared_ptr<GraphNode> child);
+	virtual void AddChild(std::shared_ptr<GraphNode> child);
 	virtual size_t NumChildren() override;
-	virtual shared_ptr<GraphNode> GetChild(int i) override;
-	virtual const wstring& Name() const override;
-	virtual void SetName(const wstring& name)  override;
+	virtual std::shared_ptr<GraphNode> GetChild(int i) override;
+	virtual const std::wstring& Name() const override;
+	virtual void SetName(const std::wstring& name)  override;
 
-	shared_ptr<DeviceResources> DevResources() { return _deviceResources; }
-	const shared_ptr<DeviceResources> DevResources() const { return _deviceResources; }
+	std::shared_ptr<DeviceResources> DevResources() { return _deviceResources; }
+	const std::shared_ptr<DeviceResources> DevResources() const { return _deviceResources; }
 
 	virtual void CreateTransform(GLTF_TransformData^ data);
 	virtual int Index() override { return _index; };
@@ -214,9 +213,9 @@ protected:
 
 	int _index;
 
-	vector<shared_ptr<GraphNode>>_children;
-	shared_ptr<DeviceResources> _deviceResources;
-	wstring _name;
+	std::vector<std::shared_ptr<GraphNode>>_children;
+	std::shared_ptr<DeviceResources> _deviceResources;
+	std::wstring _name;
 	bool _selected = false;
 	GUID _guid;
 	bool m_loadingComplete = false;

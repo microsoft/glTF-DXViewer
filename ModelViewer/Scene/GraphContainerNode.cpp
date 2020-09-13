@@ -2,6 +2,8 @@
 #include "GraphContainerNode.h"
 #include "BufferManager.h"
 
+using namespace std;
+
 GraphContainerNode::GraphContainerNode(int index) : 
 	_index(index)
 {

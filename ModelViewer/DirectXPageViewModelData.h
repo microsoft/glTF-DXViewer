@@ -2,14 +2,12 @@
 
 #include "Subject.h"
 
-using namespace std;
-
 class DirectXPageViewModelData
 {
 public:
 	DirectXPageViewModelData();
 
-	sub_token RegisterForUpdates(function<void(DirectXPageViewModelData&)> slot)
+	sub_token RegisterForUpdates(std::function<void(DirectXPageViewModelData&)> slot)
 	{
 		return DataChanged.subscribe(slot);
 	}

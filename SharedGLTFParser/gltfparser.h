@@ -5,8 +5,6 @@
 #include <functional>
 #include <memory>
 
-using namespace std;
-
 // The following ifdef block is the standard way of creating macros which make exporting 
 // from a DLL simpler. All files within this DLL are compiled with the GLTFPARSER_EXPORTS
 // symbol defined on the command line. This symbol should not be defined on any project
@@ -108,11 +106,11 @@ public:
 	BufferDesc desc;
 };
 
-HRESULT GLTFPARSER_API ParseFile(shared_ptr<istream> inStr, 
-	const string& baseUri,
+HRESULT GLTFPARSER_API ParseFile(std::shared_ptr<std::istream> inStr,
+	const std::string& baseUri,
 	Microsoft::glTF::IStreamReader& gltfStreamReader,
-	function<void(const BufferData&)> bufferCallback,
-	function<void(const MaterialData&)> materialCallback,
-	function<void(const TextureData&)> textureCallback,
-	function<void(const TransformData&)> transformCallback,
-	function<void(const SceneNodeData&)> sceneNodeCallback);
+	std::function<void(const BufferData&)> bufferCallback,
+	std::function<void(const MaterialData&)> materialCallback,
+	std::function<void(const TextureData&)> textureCallback,
+	std::function<void(const TransformData&)> transformCallback,
+	std::function<void(const SceneNodeData&)> sceneNodeCallback);

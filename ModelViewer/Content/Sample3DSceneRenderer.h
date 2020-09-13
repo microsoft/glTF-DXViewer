@@ -3,7 +3,6 @@
 #include "..\Common\DeviceResources.h"
 #include "ShaderStructures.h"
 #include "..\Common\StepTimer.h"
-//#include "../SharedGLTFParser/gltfparser.h"
 #include "DXGrid.h"
 #include "Axis.h"
 #include "./Scene/GraphContainerNode.h"
@@ -11,7 +10,6 @@
 namespace ModelViewer
 {
 	using namespace WinRTGLTFParser;
-	//using namespace std;
 	using namespace Microsoft::WRL;
 	using namespace Windows::System;
 	using namespace Platform;

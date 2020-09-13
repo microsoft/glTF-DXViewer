@@ -4,6 +4,7 @@
 #include "Common\DeviceResources.h"
 #include "Content\Sample3DSceneRenderer.h"
 #include "Content\SampleFpsTextRenderer.h"
+#include <RenderTexture.h>
 
 // Renders Direct2D and 3D content on the screen.
 namespace ModelViewer
@@ -53,6 +54,8 @@ namespace ModelViewer
 		// TODO: Replace with your own content renderers.
 		unique_ptr<Sample3DSceneRenderer> m_sceneRenderer;
 		unique_ptr<SampleFpsTextRenderer> m_fpsTextRenderer;
+
+		unique_ptr<RenderTexture> m_renderTexture;
 
 		IAsyncAction^ m_renderLoopWorker;
 		critical_section m_criticalSection;
